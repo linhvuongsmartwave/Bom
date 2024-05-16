@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e92b35d143d3e56438d56d00c2c195ad, type: 3}
-  m_Name: Map1
+  m_Script: {fileID: 11500000, guid: e6c6477ef18b24444a1074808fe2f43b, type: 3}
+  m_Name: Character
   m_EditorClassIdentifier: 
-  level: 1
-  prefabMap: {fileID: 469299545, guid: 0ddd1eee305058848b89b0b03304a858, type: 3}
+  health: 10
+  speedMove: 3

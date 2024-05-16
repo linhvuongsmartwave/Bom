@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da4b19ca5e4d9547bb5bffb051fef18, type: 3}
   m_Name: DataMapController
   m_EditorClassIdentifier: 
-  dataMaps: []
+  dataMaps:
+  - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
+  - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
+  - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
+  - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
+  - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
