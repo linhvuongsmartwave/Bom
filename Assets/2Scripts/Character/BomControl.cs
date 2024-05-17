@@ -8,6 +8,7 @@ public class BomControl : MonoBehaviour
     public float bomFuseTime = 3f;
     public int bombAmount = 1;
     private int bomRemaining;
+    bool isPushBom = false;
 
     private void OnEnable()
     {
@@ -32,5 +33,12 @@ public class BomControl : MonoBehaviour
         Destroy(bom);
         bomRemaining++;
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Bom"))
+        {
+            collision.isTrigger = false;
+        }
     }
 }

@@ -11,10 +11,10 @@ public class Character : MonoBehaviour
     public float speedMove;
     public Slider sliderheath;
 
-    public CharacterData characterData;
+    public Animator anm;
     public Rigidbody2D rb;
     public Vector2 movement;
-    public Animator anm;
+    public CharacterData characterData;
 
     public virtual void Start()
     {
