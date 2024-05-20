@@ -456,10 +456,10 @@ MonoBehaviour:
   currentHealth: 0
   speedMove: 0
   sliderheath: {fileID: 7013449508950315108}
-  characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
+  anm: {fileID: 0}
   rb: {fileID: 0}
   movement: {x: 0, y: 0}
-  anm: {fileID: 0}
+  characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
 --- !u!50 &7013449508936180789
 Rigidbody2D:
   serializedVersion: 4
@@ -512,6 +512,9 @@ MonoBehaviour:
   bomPrefabs: {fileID: 9183247948338821838, guid: d7349ab7371e1444a88b3badc5a4d0c2, type: 3}
   bomFuseTime: 3
   bombAmount: 1
+  effect: {fileID: 3488737863066624823, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
+  duration: 1
+  radius: 1
 --- !u!1 &7013449508950315114
 GameObject:
   m_ObjectHideFlags: 0
