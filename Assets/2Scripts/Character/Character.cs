@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         maxHealth = characterData.health;
         speedMove = characterData.speedMove;
-        Debug.Log("speedMove: "+ speedMove);
+        Debug.Log("speedMove: " + speedMove);
     }
 
     public virtual void Update()
@@ -49,21 +49,11 @@ public class Character : MonoBehaviour
         anm.SetFloat("Vertical", movement.y);
         anm.SetFloat("Speed", movement.sqrMagnitude);
     }
-    public virtual  void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("SpeedUp"))
-        {
-            speedMove += speedMove/3;
-            Destroy(collision.gameObject);
-
-            Debug.Log("speedMove: "+ speedMove);
-
-        }
-    }
+   
 
 }
