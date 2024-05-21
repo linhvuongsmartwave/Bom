@@ -52,4 +52,6 @@ public class Character : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
+
+
 }

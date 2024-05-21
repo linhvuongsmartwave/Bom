@@ -510,9 +510,10 @@ GameObject:
   m_Component:
   - component: {fileID: 178490264}
   - component: {fileID: 178490263}
+  - component: {fileID: 178490265}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: PushBom
+  m_TagString: PushBom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,6 +585,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &178490265
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178490262}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.49
 --- !u!1 &304311434
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013449508936180791, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
       propertyPath: bomFuseTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7013449508936180791, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
       propertyPath: effectLayer.m_Bits

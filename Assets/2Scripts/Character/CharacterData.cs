@@ -7,4 +7,6 @@ public class CharacterData : ScriptableObject
 {
     public int health;
     public float speedMove;
+
+    
 }
