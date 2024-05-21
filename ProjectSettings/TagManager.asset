@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Effect
   - PushBom
+  - SpeedUp
+  - Shield
   layers:
   - Default
   - TransparentFX
