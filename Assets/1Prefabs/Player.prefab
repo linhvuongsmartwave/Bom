@@ -512,6 +512,9 @@ MonoBehaviour:
   bomPrefabs: {fileID: 9183247948338821838, guid: d7349ab7371e1444a88b3badc5a4d0c2, type: 3}
   bomFuseTime: 3
   bombAmount: 1
+  effectLayer:
+    serializedVersion: 2
+    m_Bits: 512
   effect: {fileID: 3488737863066624823, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
   duration: 1
   radius: 1

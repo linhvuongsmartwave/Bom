@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7344011276117215306}
   - component: {fileID: 3223364444277718437}
   - component: {fileID: 3488737863066624823}
+  - component: {fileID: 3684741332178408379}
   m_Layer: 0
   m_Name: Effect
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,27 @@ MonoBehaviour:
   start: {fileID: 6278080885270626981}
   middle: {fileID: 3128504501859529201}
   end: {fileID: 5743464677847188255}
+--- !u!50 &3684741332178408379
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327377146596020553}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6629200772601722844
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +112,7 @@ GameObject:
   - component: {fileID: 3128504501859529201}
   m_Layer: 0
   m_Name: Mid
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +222,7 @@ GameObject:
   - component: {fileID: 6278080885270626981}
   m_Layer: 0
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +332,7 @@ GameObject:
   - component: {fileID: 5743464677847188255}
   m_Layer: 0
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
