@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    bool isDie = false;
+    bool isTakeDamage = false;
     bool canTakeDame = true;
 
     public override void Start()
@@ -21,6 +21,7 @@ public class Player : Character
     {
         base.FixedUpdate();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("SpeedUp"))
@@ -31,12 +32,12 @@ public class Player : Character
         if (collision.gameObject.CompareTag("Effect") && canTakeDame)
         {
             StartCoroutine(HandleEffectCollision());
-            isDie = false;
+            isTakeDamage = false;
         }
 
         if (collision.gameObject.CompareTag("Shield"))
         {
-            isDie = true;
+            isTakeDamage = true;
             Destroy(collision.gameObject);
         }
     }
@@ -44,20 +45,32 @@ public class Player : Character
     IEnumerator HandleEffectCollision()
     {
         canTakeDame = false;
-        Die();
+        TakeDamage();
         yield return new WaitForSeconds(1.0f); // Cooldown period to prevent multiple triggers
         canTakeDame = true;
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
 
-    }
-    public void Die()
+    public void TakeDamage()
     {
-        if (!isDie)
+        if (!isTakeDamage)
         {
-            Debug.Log("Die");
-
+            Debug.Log("TakeDamage");
         }
     }
+
+    public void heal(int damage)
+    {
+        currentHealth -= damage;
+        sliderheath.value = currentHealth;
+        Debug.Log("currentHealth : "+ currentHealth);
+
+        if (currentHealth<=0)
+        {
+            Debug.Log("cut");
+        }
+    }
+
+
+
+
 }

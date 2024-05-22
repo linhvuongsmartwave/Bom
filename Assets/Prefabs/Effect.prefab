@@ -75,6 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed89b0edfc05ee24d99cc586bfc18795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomDataPlayer: {fileID: 11400000, guid: 9d8b2263b8815a44b8bbc3bd4c26ed56, type: 2}
+  bomDataEnemy: {fileID: 11400000, guid: 210d3fa5983060c47a17bcc7e0b2be2e, type: 2}
+  typeAttack: 0
   start: {fileID: 6278080885270626981}
   middle: {fileID: 3128504501859529201}
   end: {fileID: 5743464677847188255}

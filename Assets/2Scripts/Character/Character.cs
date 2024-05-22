@@ -21,8 +21,9 @@ public class Character : MonoBehaviour
         anm = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         maxHealth = characterData.health;
+        currentHealth = maxHealth;
+        sliderheath.value = currentHealth;
         speedMove = characterData.speedMove;
-        Debug.Log("speedMove: " + speedMove);
     }
 
     public virtual void Update()
