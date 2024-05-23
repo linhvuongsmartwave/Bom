@@ -8,7 +8,7 @@ public class Player : Character
     public enum TypePlayer
     {
         normalPlayer,
-        HpPlayer,
+        buffaloPlayer,
         speedPlayer
     }
 
@@ -20,6 +20,10 @@ public class Player : Character
     public override void Start()
     {
         base.Start();
+        if (typePlayer==TypePlayer.speedPlayer)
+        {
+            speedMove += 5;
+        }
     }
 
     public override void Update()
@@ -74,7 +78,7 @@ public class Player : Character
                     touchBom = 0;
                 }
             }
-            else if (typePlayer == TypePlayer.HpPlayer)
+            else if (typePlayer == TypePlayer.buffaloPlayer)
             {
                 heal(maxHealth/2);
 

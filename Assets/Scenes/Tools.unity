@@ -835,35 +835,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7013449507457977669, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449507457977669, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7013449508936180788, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: typePlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508936180791, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508936180791, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: bomFuseTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508936180791, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: effectLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 7013449508936180792, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508936180792, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7013449508936180794, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
@@ -909,14 +885,6 @@ PrefabInstance:
     - target: {fileID: 7013449508936180794, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508950315108, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013449508950315108, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}
-      propertyPath: m_MaxValue
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29ba514a2895a04da78f39cefba16e5, type: 3}

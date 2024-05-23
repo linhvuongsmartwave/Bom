@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
-    public int maxHealth;
-    public int currentHealth;
+    [HideInInspector] public Animator anm;
+    [HideInInspector] public int maxHealth;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public float speedMove;
+    [HideInInspector] public Vector2 movement;
+    [HideInInspector] public int currentHealth;
 
-    public float speedMove;
     public Slider sliderheath;
-
-    public Animator anm;
-    public Rigidbody2D rb;
-    public Vector2 movement;
     public CharacterData characterData;
 
     public virtual void Start()
