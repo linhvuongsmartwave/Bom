@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public TypePlayer typePlayer;
+    public enum TypePlayer
+    {
+        normalPlayer,
+        HpPlayer,
+        speedPlayer
+    }
+
+
     bool isTakeDamage = false;
     bool canTakeDame = true;
+    int touchBom = 0;
 
     public override void Start()
     {
@@ -46,7 +56,7 @@ public class Player : Character
     {
         canTakeDame = false;
         TakeDamage();
-        yield return new WaitForSeconds(1.0f); // Cooldown period to prevent multiple triggers
+        yield return new WaitForSeconds(1.0f); 
         canTakeDame = true;
     }
 
@@ -54,20 +64,39 @@ public class Player : Character
     {
         if (!isTakeDamage)
         {
-            Debug.Log("TakeDamage");
+            touchBom += 1;
+            if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)
+            {
+                heal(maxHealth);
+                if (touchBom == 1)
+                {
+                    Die();
+                    touchBom = 0;
+                }
+            }
+            else if (typePlayer == TypePlayer.HpPlayer)
+            {
+                heal(maxHealth/2);
+
+                if (touchBom == 2)
+                {
+                    Die();
+                    touchBom = 0;
+                }
+            }
         }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Die");
     }
 
     public void heal(int damage)
     {
         currentHealth -= damage;
         sliderheath.value = currentHealth;
-        Debug.Log("currentHealth : "+ currentHealth);
 
-        if (currentHealth<=0)
-        {
-            Debug.Log("cut");
-        }
     }
 
 
