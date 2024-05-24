@@ -36,7 +36,11 @@ public class BomControl : MonoBehaviour
         position.y = Mathf.Round(position.y);
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
+        AudioManager.Instance.CoolDown();
         yield return new WaitForSeconds(bomFuseTime);
+
+        StartCoroutine(VibrateCamera(0.2f,0.07f));
+        AudioManager.Instance.BomExp();
 
         position = bom.transform.position;
         position.x = Mathf.Round(position.x);
@@ -84,5 +88,20 @@ public class BomControl : MonoBehaviour
             isPushBom = true;
             Destroy(collision.gameObject);
         }
+    }
+
+    IEnumerator VibrateCamera(float duration, float magnitude)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+        float elapsed = 0.0f;
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            Camera.main.transform.position = new Vector3(originalPosition.x + x, originalPosition.y +y, originalPosition.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        Camera.main.transform.position = originalPosition;
     }
 }

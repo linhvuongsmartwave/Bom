@@ -11,7 +11,8 @@ public class Character : MonoBehaviour
     [HideInInspector] public float speedMove;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public int currentHealth;
-
+//    public Joystick movementJoystick;
+    public FixedJoystick movementJoystick;
     public Slider sliderheath;
     public CharacterData characterData;
 
@@ -27,8 +28,11 @@ public class Character : MonoBehaviour
 
     public virtual void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 direction = movementJoystick.Direction;
+        float horizontalInput = direction.x;
+        float verticalInput = direction.y;
+        // float horizontalInput = Input.GetAxisRaw("Horizontal");
+        // float verticalInput = Input.GetAxisRaw("Vertical");
         if (horizontalInput != 0)
         {
             movement.x = horizontalInput;

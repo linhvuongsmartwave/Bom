@@ -118,8 +118,15 @@ public class LoadMapWithTools : MonoBehaviour {
       parentSpawn.transform);
     renderedObjects.Add(obj);
   }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            CreateObjectAtMousePosition();
+        }
+    }
 
-  public void ClearAll() {
+    public void ClearAll() {
     foreach (GameObject obj in renderedObjects) {
       Destroy(obj);
     }
