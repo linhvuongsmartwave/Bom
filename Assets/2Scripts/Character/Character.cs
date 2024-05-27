@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,8 +31,7 @@ public class Character : MonoBehaviour
         Vector2 direction = movementJoystick.Direction;
         float horizontalInput = direction.x;
         float verticalInput = direction.y;
-        // float horizontalInput = Input.GetAxisRaw("Horizontal");
-        // float verticalInput = Input.GetAxisRaw("Vertical");
+
         if (horizontalInput != 0)
         {
             movement.x = horizontalInput;
