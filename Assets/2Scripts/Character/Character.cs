@@ -16,6 +16,11 @@ public class Character : MonoBehaviour
     public Slider sliderheath;
     public CharacterData characterData;
 
+    private void Awake()
+    {
+        movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
+
+    }
     public virtual void Start()
     {
         anm = GetComponent<Animator>();
