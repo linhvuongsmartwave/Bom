@@ -7,10 +7,10 @@ public class BomControl : MonoBehaviour
     [Header("Bom")]
     public GameObject bomPrefabs;
     public float bomFuseTime = 3f;
-    //public int bombAmount;
     public int bomRemaining;
     bool isPushBom = false;
     public LayerMask effectLayer;
+
     [Header("Effect")]
     public Explosion effect;
     public float duration = 1f;
@@ -19,13 +19,9 @@ public class BomControl : MonoBehaviour
     private void Start()
     {
         radius = 1;
-        //bombAmount = 1;
         bomRemaining = 1;
     }
-    //private void OnEnable()
-    //{
-    //    bomRemaining = bombAmount;
-    //}
+
 
     private void Update()
     {

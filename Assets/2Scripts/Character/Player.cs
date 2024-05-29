@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public FixedJoystick movementJoystick;
+
     public TypePlayer typePlayer;
     public enum TypePlayer
     {
@@ -16,7 +18,11 @@ public class Player : Character
     bool isTakeDamage = false;
     bool canTakeDame = true;
     int touchBom = 0;
+    private void Awake()
+    {
+        movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
 
+    }
     public override void Start()
     {
         base.Start();
@@ -25,16 +31,38 @@ public class Player : Character
             speedMove += 5;
         }
     }
-
-    public override void Update()
+    public  void Update()
     {
-        base.Update();
+        Vector2 direction = movementJoystick.Direction;
+        float horizontalInput = direction.x;
+        float verticalInput = direction.y;
+
+        if (horizontalInput != 0)
+        {
+            movement.x = horizontalInput;
+            movement.y = 0;
+        }
+        else if (verticalInput != 0)
+        {
+            movement.x = 0;
+            movement.y = verticalInput;
+        }
+        else
+        {
+            movement.x = 0;
+            movement.y = 0;
+        }
+
+        anm.SetFloat("Horizontal", movement.x);
+        anm.SetFloat("Vertical", movement.y);
+        anm.SetFloat("Speed", movement.sqrMagnitude);
+    }
+    public  void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
 
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
