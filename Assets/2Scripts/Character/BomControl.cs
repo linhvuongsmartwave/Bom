@@ -7,31 +7,42 @@ public class BomControl : MonoBehaviour
     [Header("Bom")]
     public GameObject bomPrefabs;
     public float bomFuseTime = 3f;
-    public int bombAmount = 1;
-    private int bomRemaining;
+    //public int bombAmount;
+    public int bomRemaining;
     bool isPushBom = false;
     public LayerMask effectLayer;
     [Header("Effect")]
     public Explosion effect;
     public float duration = 1f;
-    public int radius = 1;
+    public int radius ;
 
-
-    private void OnEnable()
+    private void Start()
     {
-        bomRemaining = bombAmount;
+        radius = 1;
+        //bombAmount = 1;
+        bomRemaining = 1;
     }
+    //private void OnEnable()
+    //{
+    //    bomRemaining = bombAmount;
+    //}
 
     private void Update()
     {
-        if (bomRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (bomRemaining > 0 &&  Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(PlaceBom());
         }
+
     }
+
     public void PutBom()
     {
-        StartCoroutine(PlaceBom());
+        if (bomRemaining > 0)
+        {
+
+            StartCoroutine(PlaceBom());
+        }
     }
     public IEnumerator PlaceBom()
     {
@@ -43,7 +54,7 @@ public class BomControl : MonoBehaviour
         AudioManager.Instance.CoolDown();
         yield return new WaitForSeconds(bomFuseTime);
 
-        StartCoroutine(VibrateCamera(0.2f,0.07f));
+        StartCoroutine(VibrateCamera(0.2f, 0.07f));
         AudioManager.Instance.BomExp();
 
         position = bom.transform.position;
@@ -67,7 +78,7 @@ public class BomControl : MonoBehaviour
     {
         if (length <= 0) return;
         position += direction;
-        if (Physics2D.OverlapBox(position,Vector2.one/2f,0,effectLayer))
+        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0, effectLayer))
             return;
 
         Explosion explosion = Instantiate(effect, position, Quaternion.identity);
@@ -75,7 +86,7 @@ public class BomControl : MonoBehaviour
         explosion.SetDirection(direction);
         explosion.DestroyAfter(duration);
 
-        Explode(position,direction,length-1);
+        Explode(position, direction, length - 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -102,7 +113,7 @@ public class BomControl : MonoBehaviour
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-            Camera.main.transform.position = new Vector3(originalPosition.x + x, originalPosition.y +y, originalPosition.z);
+            Camera.main.transform.position = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z);
             elapsed += Time.deltaTime;
             yield return null;
         }
