@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,9 +45,15 @@ public class BomControl : MonoBehaviour
         Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
+
+        Collider2D existingBom = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
+        if (existingBom != null)
+        {
+            yield break; // Thoát khỏi coroutine nếu đã có bom tại vị trí này
+        }
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
-        AudioManager.Instance.CoolDown();
+        AudioManager.Instance.CoolDown();   
         yield return new WaitForSeconds(bomFuseTime);
 
         StartCoroutine(VibrateCamera(0.2f, 0.07f));
