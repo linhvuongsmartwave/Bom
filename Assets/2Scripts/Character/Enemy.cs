@@ -6,6 +6,7 @@ public class Enemy : Character
 {
     public LayerMask obstacleLayer;
     public Vector2 movementDirection = Vector2.right; // Hướng di chuyển mặc định
+    Vector2[] randomDirections = new Vector2[] { Vector2.down, Vector2.left, Vector2.right, Vector2.up };
 
     public void Update()
     {
@@ -27,7 +28,7 @@ public class Enemy : Character
     {
         Vector2 position = rb.position;
         Vector2 direction = new Vector2(movement.x, movement.y).normalized;
-        float distance = 2f;
+        float distance = 0.8f;
 
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, obstacleLayer);
         if (hit.collider != null)
@@ -42,16 +43,9 @@ public class Enemy : Character
 
     private Vector2 GetNewDirection(Vector2 currentDirection)
     {
-        // Thay đổi hướng di chuyển, ví dụ: đổi từ phải sang trái, từ trên xuống dưới, v.v.
-        if (currentDirection == Vector2.right)
-            return Vector2.left;
-        else if (currentDirection == Vector2.left)
-            return Vector2.right;
-        else if (currentDirection == Vector2.up)
-            return Vector2.down;
-        else if (currentDirection == Vector2.down)
-            return Vector2.up;
-
-        return Vector2.right; // Hướng mặc định nếu không khớp
+        List<Vector2> newDirections = new List<Vector2>(randomDirections);
+        newDirections.Remove(currentDirection);
+        int randomIndex = Random.Range(0, newDirections.Count);
+        return newDirections[randomIndex];
     }
 }
