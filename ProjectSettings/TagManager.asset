@@ -8,6 +8,7 @@ TagManager:
   - PushBom
   - SpeedUp
   - Shield
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Bom
   - Brick
   - Obstacle
-  - 
+  - Enemy
   - 
   - 
   - 

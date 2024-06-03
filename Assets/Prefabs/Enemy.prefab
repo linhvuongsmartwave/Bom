@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9141700990187320510}
   - component: {fileID: 9141700990187320509}
   - component: {fileID: 9141700990187320495}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 9141700990187320499}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 08e29b6e7feda934e8259116577d341b, type: 2}
+  m_Controller: {fileID: 9100000, guid: a68dfdf12c599c34e83a9f9fc0d33868, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,6 +167,15 @@ MonoBehaviour:
   currentHealth: 0
   sliderheath: {fileID: 9141700990199382255}
   characterData: {fileID: 11400000, guid: 9b574af1b059ded40822d1f28f452eea, type: 2}
+  bomPrefabs: {fileID: 9183247948338821838, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
+  bomFuseTime: 2
+  bomRemaining: 0
+  effectLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  effect: {fileID: 3488737863066624823, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
+  duration: 1
+  radius: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 768
@@ -181,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9141700990199382240}
   - component: {fileID: 9141700990199382255}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Healbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +282,7 @@ GameObject:
   - component: {fileID: 9141700990852865486}
   - component: {fileID: 9141700990852865484}
   - component: {fileID: 9141700990852865485}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +359,7 @@ GameObject:
   - component: {fileID: 9141700991368760634}
   - component: {fileID: 9141700991368760635}
   - component: {fileID: 9141700991368760636}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +459,7 @@ GameObject:
   - component: {fileID: 9141700991484686642}
   - component: {fileID: 9141700991484686640}
   - component: {fileID: 9141700991484686641}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +535,7 @@ GameObject:
   - component: {fileID: 9141700991617519902}
   - component: {fileID: 9141700991617519900}
   - component: {fileID: 9141700991617519901}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
