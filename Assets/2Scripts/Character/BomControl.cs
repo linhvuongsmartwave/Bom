@@ -46,10 +46,10 @@ public class BomControl : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
-        Collider2D existingBom = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
-        if (existingBom != null)
+        Collider2D bomAlready = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
+        if (bomAlready != null)
         {
-            yield break; // Thoát khỏi coroutine nếu đã có bom tại vị trí này
+            yield break; 
         }
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;

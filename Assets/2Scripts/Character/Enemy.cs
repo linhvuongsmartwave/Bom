@@ -98,17 +98,24 @@ public class Enemy : Character
     private void CheckForObstacles()
     {
         Vector2 position = rb.position;
-        Vector2 direction = new Vector2(movement.x, movement.y).normalized;
+        Vector2 forward = new Vector2(movement.x, movement.y).normalized;
+        Vector2 left = new Vector2(-movement.y, movement.x).normalized;
+        Vector2 right = new Vector2(movement.y, -movement.x).normalized;
         float distance = 0.6f;
 
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), direction, distance, obstacleLayer);
-        if (hit.collider != null)
+        RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), forward, distance, obstacleLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), left, distance, obstacleLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), right, distance, obstacleLayer);
+        if (hitForward.collider != null)
         {
             movementDirection = GetNewDirection(movementDirection);
-            PutBom();
+            //PutBom();
         }
+        
 
-        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y-0.2f), direction * distance, Color.red);
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y-0.2f), forward * distance, Color.red);
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), left * distance, Color.red);
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), right * distance, Color.red);
     }
 
     private Vector2 GetNewDirection(Vector2 currentDirection)

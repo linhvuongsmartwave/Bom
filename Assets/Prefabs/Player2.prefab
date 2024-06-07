@@ -357,9 +357,9 @@ MonoBehaviour:
   speedMove: 0
   movement: {x: 0, y: 0}
   currentHealth: 0
-  movementJoystick: {fileID: 0}
   sliderheath: {fileID: 8967363528911715241}
   characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
+  movementJoystick: {fileID: 0}
   typePlayer: 1
 --- !u!50 &8967363528890312574
 Rigidbody2D:
@@ -411,8 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomPrefabs: {fileID: 9183247948338821838, guid: d7349ab7371e1444a88b3badc5a4d0c2, type: 3}
-  bomFuseTime: 2
-  bombAmount: 1
+  bomFuseTime: 3
+  bomRemaining: 0
   effectLayer:
     serializedVersion: 2
     m_Bits: 512

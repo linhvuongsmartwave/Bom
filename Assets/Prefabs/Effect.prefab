@@ -75,9 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed89b0edfc05ee24d99cc586bfc18795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomDataPlayer: {fileID: 11400000, guid: 9d8b2263b8815a44b8bbc3bd4c26ed56, type: 2}
-  bomDataEnemy: {fileID: 11400000, guid: 210d3fa5983060c47a17bcc7e0b2be2e, type: 2}
-  typeAttack: 0
   start: {fileID: 6278080885270626981}
   middle: {fileID: 3128504501859529201}
   end: {fileID: 5743464677847188255}
@@ -175,7 +172,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1619254937, guid: aef4deb18316b7145b917f75f213862a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -285,7 +282,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 716524050, guid: 0eb594be54bcd9a478e0bcead1f0db0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -395,7 +392,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 546187093, guid: 834622ae11ccb5a439e2690e6da37a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
