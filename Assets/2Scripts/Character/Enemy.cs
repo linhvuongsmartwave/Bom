@@ -16,7 +16,7 @@ public class Enemy : Character
     public int radius;
 
     public LayerMask obstacleLayer;
-    public Vector2 movementDirection = Vector2.right; 
+    public Vector2 movementDirection = Vector2.right;
     Vector2[] randomDirections = new Vector2[] { Vector2.down, Vector2.left, Vector2.right, Vector2.up };
 
     public override void Start()
@@ -43,7 +43,7 @@ public class Enemy : Character
         Collider2D existingBom = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
         if (existingBom != null)
         {
-            yield break; 
+            yield break;
         }
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
@@ -103,17 +103,23 @@ public class Enemy : Character
         Vector2 right = new Vector2(movement.y, -movement.x).normalized;
         float distance = 0.6f;
 
-        RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), forward, distance, obstacleLayer);
-        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), left, distance, obstacleLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y-0.2f), right, distance, obstacleLayer);
+        RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), forward, distance, obstacleLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), left, distance, obstacleLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), right, distance, obstacleLayer);
         if (hitForward.collider != null)
         {
             movementDirection = GetNewDirection(movementDirection);
             //PutBom();
-        }
-        
 
-        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y-0.2f), forward * distance, Color.red);
+        }
+        if (hitForward.collider != null && hitForward.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
+            || hitLeft.collider != null && hitLeft.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
+            || hitRight.collider != null && hitRight.collider.gameObject.layer == LayerMask.NameToLayer("Brick"))
+        {
+            PutBom();
+        }
+
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), forward * distance, Color.red);
         Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), left * distance, Color.red);
         Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), right * distance, Color.red);
     }

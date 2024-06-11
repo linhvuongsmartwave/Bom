@@ -208,7 +208,7 @@ MonoBehaviour:
   sliderheath: {fileID: 5805175218788040600}
   characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
   movementJoystick: {fileID: 0}
-  typePlayer: 1
+  typePlayer: 2
 --- !u!50 &5805175218472133399
 Rigidbody2D:
   serializedVersion: 4

@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-
+    public SceneFader sceneFader;
     public void LoadSceneGamePlay()
     {
-        SceneManager.LoadScene("GamePlay");
+        sceneFader.FadeTo("GamePlay");
     }
 }

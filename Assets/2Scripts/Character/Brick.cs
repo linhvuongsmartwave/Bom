@@ -14,12 +14,18 @@ public class Brick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Effect"))
         {
-            anim.SetBool("Destroy",true);
+            Invoke(nameof(PlayAnim), 0.5f);
         }
     }
 
     public void DestroyBrick()
     {
         Destroy(this.gameObject);
+    }
+
+    public void PlayAnim()
+    {
+        anim.SetBool("Destroy", true);
+
     }
 }
