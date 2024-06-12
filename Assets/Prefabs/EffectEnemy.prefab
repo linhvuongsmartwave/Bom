@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3488737863066624823}
   - component: {fileID: 3684741332178408379}
   m_Layer: 0
-  m_Name: Effect
-  m_TagString: Effect
+  m_Name: EffectEnemy
+  m_TagString: EffectEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,7 +12,7 @@ public class Brick : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Effect"))
+        if (collision.gameObject.CompareTag(Const.effectEnemy) || collision.gameObject.CompareTag(Const.effectPlayer))
         {
             Invoke(nameof(PlayAnim), 0.5f);
         }

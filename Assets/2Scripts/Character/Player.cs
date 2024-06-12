@@ -66,18 +66,18 @@ public class Player : Character
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("SpeedUp"))
+        if (collision.gameObject.CompareTag(Const.speedUp))
         {
             speedMove += speedMove / 3;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Effect") && canTakeDame)
+        if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
         {
             StartCoroutine(HandleEffectCollision());
             isTakeDamage = false;
         }
 
-        if (collision.gameObject.CompareTag("Shield"))
+        if (collision.gameObject.CompareTag(Const.shield))
         {
             isTakeDamage = true;
             Destroy(collision.gameObject);

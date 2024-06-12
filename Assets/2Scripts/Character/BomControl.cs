@@ -60,6 +60,8 @@ public class BomControl : MonoBehaviour
         AudioManager.Instance.BomExp();
 
         position = bom.transform.position;
+
+
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 

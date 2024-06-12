@@ -9,6 +9,7 @@ TagManager:
   - SpeedUp
   - Shield
   - Enemy
+  - BomPlayer
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public TypeEnemy typeEnemy;
+    int bossHp=3;
+    public enum TypeEnemy
+    {
+        boss,
+        enemy
+    }
+
+
     [Header("Bom")]
     public GameObject bomPrefabs;
     public float bomFuseTime = 3f;
@@ -24,6 +33,24 @@ public class Enemy : Character
         base.Start();
         radius = 1;
         bomRemaining = 2;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EffectPlayer"))
+        {
+            if (typeEnemy==TypeEnemy.boss)
+            {
+                bossHp--;
+                if (bossHp <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     public void PutBom()
