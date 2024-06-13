@@ -1055,10 +1055,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f76e345f600e6ab42916dbe1821fd9a0, type: 2}
   - {fileID: 11400000, guid: 8b4d8b87f0914a849ab6eba659cc3188, type: 2}
   levelStart: 1
-  enemy:
-  - {fileID: 9141700990187320499, guid: 7f93bf87388621547a2e9327e04379b2, type: 3}
-  - {fileID: 9141700990187320499, guid: ff15cf7e81f699f47bc14bb2abdc46fb, type: 3}
-  - {fileID: 9141700990187320499, guid: 5ac41e0184281124e8e06095387d5c14, type: 3}
+  level1: {fileID: 11400000, guid: 1bd0c6b48b8fa814e9279eff69fe2d87, type: 2}
 --- !u!4 &1639266653
 Transform:
   m_ObjectHideFlags: 0

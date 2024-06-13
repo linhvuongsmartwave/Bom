@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Effect
   - PushBom
   - SpeedUp
   - Shield
   - Enemy
   - BomPlayer
+  - EffectPlayer
+  - EffectEnemy
   layers:
   - Default
   - TransparentFX

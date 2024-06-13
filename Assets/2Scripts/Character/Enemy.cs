@@ -36,19 +36,30 @@ public class Enemy : Character
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EffectPlayer"))
+        if (collision.gameObject.CompareTag(Const.effectPlayer))
         {
             if (typeEnemy==TypeEnemy.boss)
             {
                 bossHp--;
                 if (bossHp <= 0)
                 {
+                    Debug.Log("- damage");
                     Destroy(this.gameObject);
+                    GameManager.Instance.count--;
+                    if (GameManager.Instance.count <= 0)
+                    {
+                        Debug.Log("Win");
+                    }
                 }
             }
             else
             {
                 Destroy(this.gameObject);
+                GameManager.Instance.count--;
+                if (GameManager.Instance.count<=0)
+                {
+                    Debug.Log("Win");
+                }
             }
         }
     }

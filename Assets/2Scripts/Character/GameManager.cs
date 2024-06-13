@@ -1,26 +1,34 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public DataMap[] dataMaps;
     public int levelStart;
-    public GameObject[] enemy;
+    public LevelData level1;
+    public int count = 0;
     Vector2 corner1 = new Vector2(5f, 5f);
     Vector2 corner2 = new Vector2(5f, -5f);
     Vector2 corner3 = new Vector2(-7f, -5f);
+
+
 
     void Start()
     {
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
+
+        count = level1.enemies.Count;
         if (levelStart < 5)
         {
-            Instantiate(enemy[0], corner1, Quaternion.identity);
-            Instantiate(enemy[1], corner2, Quaternion.identity);
-            Instantiate(enemy[2], corner3, Quaternion.identity);
+            Instantiate(level1.enemies[0], corner1, Quaternion.identity);
+            Instantiate(level1.enemies[1], corner2, Quaternion.identity);
+            Instantiate(level1.enemies[2], corner3, Quaternion.identity);
+
         }
 
     }
+
 
     void LoadMap(int index)
     {
