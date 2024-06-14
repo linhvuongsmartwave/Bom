@@ -72,7 +72,7 @@ public class BomControl : MonoBehaviour
         Explode(position, Vector2.down, radius);
         Explode(position, Vector2.left, radius);
         Explode(position, Vector2.right, radius);
-
+                            
         Destroy(bom);
         bomRemaining++;
 
