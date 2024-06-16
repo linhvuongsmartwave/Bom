@@ -17,21 +17,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
-
-        //count = level1.enemies.Count;
-        if (levelStart < 5)
-        {
-            //Instantiate(level1.enemies[0], corner1, Quaternion.identity);
-            //Instantiate(level1.enemies[1], corner2, Quaternion.identity);
-            //Instantiate(level1.enemies[2], corner3, Quaternion.identity);
-
-        }
-
-        if (levelStart < 5)
-        {
-            LoadEnemy(0);
-        }
-
     }
 
     void LoadEnemy(int levelIndex)
@@ -43,15 +28,20 @@ public class GameManager : Singleton<GameManager>
         }
 
         LevelData currentLevel = levels[levelIndex];
-        if (currentLevel.enemies.Count >= 3)
+        if (currentLevel.enemies.Count >=3)
         {
             Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
             Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
             Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
         }
+        else if (currentLevel.enemies.Count==1)
+        {
+            Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
+
+        }
         else
         {
-            Debug.LogError("Not enough enemies in the level to instantiate at all corners.");
+            Debug.Log("Not enough enemies in the level to instantiate at all corners.");
         }
     }
 
@@ -66,6 +56,11 @@ public class GameManager : Singleton<GameManager>
             Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -0.5f), Quaternion.identity);
 
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
+
+        if (levelStart < 5)
+        {
+            LoadEnemy(0);
+        }
     }
 
     public void NextLevel()
