@@ -4,8 +4,8 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public DataMap[] dataMaps;
-    public int levelStart;
     public LevelData[] levels;
+    public int levelStart;
     public int count = 0;
     Vector2 corner1 = new Vector2(5f, 5f);
     Vector2 corner2 = new Vector2(5f, -5f);
@@ -57,10 +57,7 @@ public class GameManager : Singleton<GameManager>
 
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
 
-        if (levelStart < 5)
-        {
-            LoadEnemy(0);
-        }
+        LoadEnemy(index);
     }
 
     public void NextLevel()
