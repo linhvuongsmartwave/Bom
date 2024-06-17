@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "LevelData")]
+[CreateAssetMenu(fileName = "ListEnemy", menuName = "ListEnemy")]
 public class LevelData : ScriptableObject
 {
 

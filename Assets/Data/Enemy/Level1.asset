@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e63b7d78d5af04a4ba140c9a7d1ad23b, type: 3}
-  m_Name: level1
+  m_Name: Level1
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 9141700990187320499, guid: ff15cf7e81f699f47bc14bb2abdc46fb, type: 3}
-  - {fileID: 9141700990187320499, guid: 5ac41e0184281124e8e06095387d5c14, type: 3}
-  - {fileID: 9141700990187320499, guid: 7f93bf87388621547a2e9327e04379b2, type: 3}
+  - {fileID: 9141700990187320499, guid: 9844560b8d9cb6d40ac842438306c8fa, type: 3}

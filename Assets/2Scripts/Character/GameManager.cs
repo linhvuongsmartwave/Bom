@@ -1,5 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -60,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         LoadEnemy(index);
     }
 
+    [Button()]
     public void NextLevel()
     {
         int nextLevel = levelStart + 1;
