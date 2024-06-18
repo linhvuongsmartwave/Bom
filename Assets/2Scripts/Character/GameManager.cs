@@ -17,8 +17,13 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        LoadReSoure();
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
+    }
+    void LoadReSoure()
+    {
+        levels = Resources.LoadAll<LevelData>("ListEnemy");
     }
 
     void LoadEnemy(int levelIndex)
