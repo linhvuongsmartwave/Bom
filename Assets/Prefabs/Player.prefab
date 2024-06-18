@@ -131,7 +131,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   currentHealth: 0
   sliderheath: {fileID: 1152138477091076000}
-  characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
+  characterData: {fileID: 11400000, guid: 61d78370108c49f499c67b3af2488969, type: 2}
   movementJoystick: {fileID: 0}
   typePlayer: 0
 --- !u!50 &1152138477077971953

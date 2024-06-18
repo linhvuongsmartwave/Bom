@@ -163,7 +163,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5805175218472133481
@@ -206,7 +206,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   currentHealth: 0
   sliderheath: {fileID: 5805175218788040600}
-  characterData: {fileID: 11400000, guid: ff946f562c929cc4ab5134a4ad80fb93, type: 2}
+  characterData: {fileID: 11400000, guid: 61d78370108c49f499c67b3af2488969, type: 2}
   movementJoystick: {fileID: 0}
   typePlayer: 2
 --- !u!50 &5805175218472133399

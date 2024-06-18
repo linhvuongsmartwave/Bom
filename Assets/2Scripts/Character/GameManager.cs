@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     void LoadReSoure()
     {
         listEnemy = Resources.LoadAll<ListEnemy>("ListEnemy");
+        dataMaps = Resources.LoadAll<DataMap>("Map");
+
     }
 
     void LoadEnemy(int levelIndex)
