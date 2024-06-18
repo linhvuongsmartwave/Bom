@@ -6,7 +6,7 @@ using NaughtyAttributes;
 public class GameManager : Singleton<GameManager>
 {
     public DataMap[] dataMaps;
-    public LevelData[] levels;
+    public ListEnemy[] listEnemy;
     public int levelStart;
     public int count = 0;
     Vector2 corner1 = new Vector2(5f, 5f);
@@ -23,18 +23,18 @@ public class GameManager : Singleton<GameManager>
     }
     void LoadReSoure()
     {
-        levels = Resources.LoadAll<LevelData>("ListEnemy");
+        listEnemy = Resources.LoadAll<ListEnemy>("ListEnemy");
     }
 
     void LoadEnemy(int levelIndex)
     {
-        if (levels == null || levels.Length <= levelIndex)
+        if (listEnemy == null || listEnemy.Length <= levelIndex)
         {
             Debug.LogError("Invalid level index or levels not set.");
             return;
         }
 
-        LevelData currentLevel = levels[levelIndex];
+        ListEnemy currentLevel = listEnemy[levelIndex];
         if (currentLevel.enemies.Count >=3)
         {
             Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
