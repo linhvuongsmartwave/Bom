@@ -2775,7 +2775,7 @@ GameObject:
   - component: {fileID: 1193560337}
   - component: {fileID: 1193560339}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: SpeedUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
