@@ -23,7 +23,7 @@ public class ToolLoadScene : MonoBehaviour
     {
         OpenScene("GamePlay");
     }
-    [MenuItem("Open Scene/Tool &3")]
+    [MenuItem("Open Scene/Tool &4")]
     public static void OpenSceneTool()
     {
         OpenScene("Tools");
