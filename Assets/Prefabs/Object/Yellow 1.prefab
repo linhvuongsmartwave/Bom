@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5775573389074578935}
   - component: {fileID: 6441987354237335643}
   m_Layer: 8
-  m_Name: wood
+  m_Name: Yellow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 1d67de85f51bb8f4fac55b726fc38f97, type: 3}
-  m_Color: {r: 0.9136211, g: 1, b: 0.51886785, a: 1}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 307b808a9db55a44c97175ab8ecceb2b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.77, y: 5.79}
+    oldSize: {x: 4.77, y: 5.78}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037057588706846612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d38b2c70d146ec43b749621a9bd1746, type: 3}
   m_Name: 
@@ -133,7 +133,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037057588706846612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 34d1ef83fe4dedb4abf1e7679cd974e7, type: 2}
   m_CullingMode: 0
