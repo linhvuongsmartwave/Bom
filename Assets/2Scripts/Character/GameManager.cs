@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
     public ListEnemy[] listEnemy;
     public int levelStart;
     public int countEnemy = 0;
+    private DoTween panelWin;
+
     Vector2 corner1 = new Vector2(5f, 5f);
     Vector2 corner2 = new Vector2(5f, -5f);
     Vector2 corner3 = new Vector2(-7f, -5f);
@@ -20,6 +22,7 @@ public class GameManager : Singleton<GameManager>
         LoadReSoure();
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
+        panelWin = GameObject.FindObjectOfType<DoTween>();
     }
     void LoadReSoure()
     {
@@ -59,7 +62,7 @@ public class GameManager : Singleton<GameManager>
         countEnemy--;
         if (countEnemy <= 0)
         {
-            UiManager.Instance.PanelWin();
+            if(panelWin!=null) panelWin.PanelFadeIn();
         }
     }
 

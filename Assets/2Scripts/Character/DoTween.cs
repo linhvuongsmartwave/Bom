@@ -19,8 +19,8 @@ public class DoTween : MonoBehaviour
     public void PanelFadeIn()
     {
         canvasGroup.alpha = 0;
-        rectTransform.transform.localPosition = new Vector3(0, -1000f, 0);
-        rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.OutElastic);
+        rectTransform.transform.localPosition = new Vector3(0, -700f, 0);
+        rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.InOutBack);
         canvasGroup.DOFade(1, fadeTime);
         StartCoroutine("ItemsAnimation");
     }
