@@ -10,4 +10,8 @@ public class LoadScene : MonoBehaviour
     {
         sceneFader.FadeTo("GamePlay");
     }
+    public void LoadSceneMainMenu()
+    {
+        sceneFader.FadeTo("MainMenu");
+    }
 }

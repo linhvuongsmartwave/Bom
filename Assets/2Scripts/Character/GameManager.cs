@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     public DataMap[] dataMaps;
     public ListEnemy[] listEnemy;
     public int levelStart;
-    public int count = 0;
+    public int countEnemy = 0;
     Vector2 corner1 = new Vector2(5f, 5f);
     Vector2 corner2 = new Vector2(5f, -5f);
     Vector2 corner3 = new Vector2(-7f, -5f);
@@ -37,6 +37,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         ListEnemy currentLevel = listEnemy[levelIndex];
+        countEnemy=currentLevel.enemies.Count;
         if (currentLevel.enemies.Count >=3)
         {
             Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
@@ -53,7 +54,14 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("Not enough enemies in the level to instantiate at all corners.");
         }
     }
-
+    public void OnEnemyDestroyed()
+    {
+        countEnemy--;
+        if (countEnemy <= 0)
+        {
+            UiManager.Instance.PanelWin();
+        }
+    }
 
 
     void LoadMap(int index)

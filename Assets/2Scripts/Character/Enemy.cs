@@ -34,6 +34,12 @@ public class Enemy : Character
         radius = 1;
         bomRemaining = 2;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnEnemyDestroyed();
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Const.effectPlayer))
@@ -41,26 +47,9 @@ public class Enemy : Character
             if (typeEnemy==TypeEnemy.boss)
             {
                 bossHp--;
-                if (bossHp <= 0)
-                {
-                    Debug.Log("- damage");
-                    Destroy(this.gameObject);
-                    GameManager.Instance.count--;
-                    if (GameManager.Instance.count <= 0)
-                    {
-                        Debug.Log("Win");
-                    }
-                }
+                if (bossHp <= 0) Destroy(this.gameObject);
             }
-            else
-            {
-                Destroy(this.gameObject);
-                GameManager.Instance.count--;
-                if (GameManager.Instance.count<=0)
-                {
-                    Debug.Log("Win");
-                }
-            }
+            else Destroy(this.gameObject);
         }
     }
 
