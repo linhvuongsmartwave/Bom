@@ -71,7 +71,7 @@ public class Player : Character
             speedMove += speedMove / 3;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
+        if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.enemy) || collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
         {
             StartCoroutine(HandleEffectCollision());
             isTakeDamage = false;
