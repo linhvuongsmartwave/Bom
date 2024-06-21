@@ -46,7 +46,7 @@ public class BomControl : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
-        Collider2D bomAlready = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
+        Collider2D bomAlready = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask(Const.bom));
         if (bomAlready != null)
         {
             yield break; 
@@ -95,14 +95,14 @@ public class BomControl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isPushBom && collision.gameObject.layer == LayerMask.NameToLayer("Bom"))
+        if (isPushBom && collision.gameObject.layer == LayerMask.NameToLayer(Const.bom))
         {
             collision.isTrigger = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PushBom"))
+        if (collision.gameObject.CompareTag(Const.pushBom))
         {
             isPushBom = true;
             Destroy(collision.gameObject);

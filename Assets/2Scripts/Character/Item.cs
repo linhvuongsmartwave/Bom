@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float moveDistance = 0.3f;
-    public float moveDuration = 0.5f;
+    public float moveDistance ;
+    public float moveDuration;
     public float rotationDuration = 1.0f;
 
     void Start()
     {
-        moveDistance = 0.3f;
+        moveDistance = 0.2f;
         moveDuration = 0.5f;
         InvokeRepeating("CheckItem", 1, 1);
     }
