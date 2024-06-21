@@ -4337,6 +4337,7 @@ GameObject:
   - component: {fileID: 1851486850443756959}
   - component: {fileID: 4042363318692209546}
   - component: {fileID: 5258558476891860655}
+  - component: {fileID: 5932599800376410504}
   m_Layer: 0
   m_Name: Shield(Clone)
   m_TagString: Shield
@@ -4428,6 +4429,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &5932599800376410504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897898423800465773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &942534800376463956
 GameObject:
   m_ObjectHideFlags: 0
@@ -13889,6 +13904,7 @@ GameObject:
   - component: {fileID: 2239871041546469833}
   - component: {fileID: 4906986115072746347}
   - component: {fileID: 2449901813257617607}
+  - component: {fileID: 5680925688539336127}
   m_Layer: 0
   m_Name: PushBom(Clone)
   m_TagString: PushBom
@@ -13980,6 +13996,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.003030926}
   serializedVersion: 2
   m_Radius: 0.4271411
+--- !u!114 &5680925688539336127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158212041291931169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &3160707386912097728
 GameObject:
   m_ObjectHideFlags: 0
@@ -16608,6 +16638,7 @@ GameObject:
   - component: {fileID: 7114272517692132140}
   - component: {fileID: 5726120887231407729}
   - component: {fileID: 7321092550915906838}
+  - component: {fileID: 811208130019781550}
   m_Layer: 0
   m_Name: SpeedUp(Clone)
   m_TagString: SpeedUp
@@ -16699,6 +16730,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &811208130019781550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788357929088015512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &3791027404578062118
 GameObject:
   m_ObjectHideFlags: 0
@@ -19190,6 +19235,7 @@ GameObject:
   - component: {fileID: 1762702101120644201}
   - component: {fileID: 8541501090655692192}
   - component: {fileID: 2231573871347603734}
+  - component: {fileID: 8380701464804342295}
   m_Layer: 0
   m_Name: Shield(Clone)
   m_TagString: Shield
@@ -19281,6 +19327,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &8380701464804342295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193226341988850713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &4204893955043227221
 GameObject:
   m_ObjectHideFlags: 0
@@ -20526,6 +20586,7 @@ GameObject:
   - component: {fileID: 7178963662466224109}
   - component: {fileID: 5598287822895225934}
   - component: {fileID: 5746258855404626438}
+  - component: {fileID: 5062403363338997076}
   m_Layer: 0
   m_Name: SpeedUp(Clone)
   m_TagString: SpeedUp
@@ -20617,6 +20678,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &5062403363338997076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411160868926457403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &4417168332133081294
 GameObject:
   m_ObjectHideFlags: 0
@@ -21294,6 +21369,7 @@ GameObject:
   - component: {fileID: 9040244048260418449}
   - component: {fileID: 3846260090096553239}
   - component: {fileID: 4135468973965921761}
+  - component: {fileID: 2756942038167864428}
   m_Layer: 0
   m_Name: SpeedUp(Clone)
   m_TagString: SpeedUp
@@ -21385,6 +21461,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &2756942038167864428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494622230553440120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &4540786341804188659
 GameObject:
   m_ObjectHideFlags: 0
@@ -24334,6 +24424,7 @@ GameObject:
   - component: {fileID: 3766967089616731608}
   - component: {fileID: 7691096869684767321}
   - component: {fileID: 1246387156990246536}
+  - component: {fileID: 4349620672689316417}
   m_Layer: 0
   m_Name: SpeedUp(Clone)
   m_TagString: SpeedUp
@@ -24425,6 +24516,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &4349620672689316417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379333320565953801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &5388459132025052791
 GameObject:
   m_ObjectHideFlags: 0
@@ -33295,6 +33400,7 @@ GameObject:
   - component: {fileID: 1088501833832407792}
   - component: {fileID: 1353734629461583616}
   - component: {fileID: 5470738932122690877}
+  - component: {fileID: 3918366987539218823}
   m_Layer: 0
   m_Name: SpeedUp(Clone)
   m_TagString: SpeedUp
@@ -33386,6 +33492,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &3918366987539218823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669008071938776782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed11d11c4cbe1a4d8b0ac81538093fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.5
+  moveDuration: 0.5
 --- !u!1 &7721429790613761712
 GameObject:
   m_ObjectHideFlags: 0

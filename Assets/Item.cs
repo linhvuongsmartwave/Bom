@@ -5,14 +5,40 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float moveDistance = 0.5f; // Khoảng cách di chuyển
-    public float moveDuration = 0.5f; // Thời gian di chuyển lên hoặc xuống
+    public float moveDistance = 0.3f;
+    public float moveDuration = 0.5f;
+    public float rotationDuration = 1.0f;
 
     void Start()
     {
-        // Tạo một tween di chuyển lên xuống liên tục
-        transform.DOMoveY(transform.position.y + moveDistance, moveDuration)
-            .SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo);
+        moveDistance = 0.3f;
+        moveDuration = 0.5f;
+        InvokeRepeating("CheckItem", 1, 1);
     }
+
+
+    void CheckItem()
+    {
+        Vector2 position = transform.position;
+        position.x = Mathf.Round(position.x);
+        position.y = Mathf.Round(position.y);
+
+        Collider2D bomAlready = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Brick"));
+        if (bomAlready != null) return;
+        else
+        {
+            transform.DOMoveY(transform.position.y + moveDistance, moveDuration)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(() =>
+                {
+                    transform.DORotate(new Vector3(360, 0, 0), rotationDuration, RotateMode.FastBeyond360)
+                    .SetEase(Ease.Linear);
+
+                })
+                .SetLoops(-1, LoopType.Yoyo);
+        }
+    }
+
+
+
 }
