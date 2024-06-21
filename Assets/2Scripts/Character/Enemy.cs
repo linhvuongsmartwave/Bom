@@ -32,7 +32,7 @@ public class Enemy : Character
     {
         base.Start();
         radius = 1;
-        bomRemaining = 2;
+        bomRemaining = 1;
     }
 
     private void OnDestroy()

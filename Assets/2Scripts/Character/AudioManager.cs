@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    AudioSource audioSoure;
+    public AudioSource audioSoure;
     public AudioClip bomExp;
     public AudioClip coolDown;
 
@@ -22,5 +22,11 @@ public class AudioManager : Singleton<AudioManager>
     public void CoolDown()
     {
         audioSoure.PlayOneShot(coolDown);
+    }
+
+    public void SetActive(bool isActive)
+    {
+        if (isActive) audioSoure.volume = 1f;
+        else audioSoure.volume = 0f;
     }
 }

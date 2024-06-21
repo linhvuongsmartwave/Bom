@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomPrefabs: {fileID: 9183247948338821838, guid: d7349ab7371e1444a88b3badc5a4d0c2, type: 3}
-  bomFuseTime: 1
+  bomFuseTime: 2
   bomRemaining: 0
   effectLayer:
     serializedVersion: 2

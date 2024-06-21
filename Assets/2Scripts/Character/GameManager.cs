@@ -1,28 +1,31 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using NaughtyAttributes;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour 
 {
     public DataMap[] dataMaps;
     public ListEnemy[] listEnemy;
     public int levelStart;
     public int countEnemy = 0;
-    private DoTween panelWin;
+    private UiPanelDotween panelWin;
 
     Vector2 corner1 = new Vector2(5f, 5f);
     Vector2 corner2 = new Vector2(5f, -5f);
     Vector2 corner3 = new Vector2(-7f, -5f);
 
-
+    public static GameManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
         LoadReSoure();
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
-        panelWin = GameObject.FindObjectOfType<DoTween>();
+        panelWin = GameObject.FindObjectOfType<UiPanelDotween>();
     }
     void LoadReSoure()
     {
@@ -80,7 +83,6 @@ public class GameManager : Singleton<GameManager>
         LoadEnemy(index);
     }
 
-    [Button()]
     public void NextLevel()
     {
         int nextLevel = levelStart + 1;

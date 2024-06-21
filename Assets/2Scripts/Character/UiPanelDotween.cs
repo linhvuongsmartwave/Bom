@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using NaughtyAttributes;
 
-public class DoTween : MonoBehaviour
+public class UiPanelDotween : MonoBehaviour
 {
-    public float fadeTime = 0.5f;
-    public CanvasGroup canvasGroup;
-    public RectTransform rectTransform;
+    [SerializeField] private float fadeTime = 0.5f;
+    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private RectTransform rectTransform;
 
 
-    public List<GameObject> items = new List<GameObject>();
+    //public List<GameObject> items = new List<GameObject>();
 
 
-    [Button()]
     public void PanelFadeIn()
     {
         canvasGroup.alpha = 0;
         rectTransform.transform.localPosition = new Vector3(0, -700f, 0);
         rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.InOutBack);
         canvasGroup.DOFade(1, fadeTime);
-        StartCoroutine("ItemsAnimation");
+        //StartCoroutine("ItemsAnimation");
     }
 
     public void PanelFadeOut()
@@ -32,18 +30,18 @@ public class DoTween : MonoBehaviour
         rectTransform.DOAnchorPos(new Vector2(0, -2000f), fadeTime, false).SetEase(Ease.InOutBack);
         canvasGroup.DOFade(1, fadeTime);
     }
-    IEnumerator ItemsAnimation()
-    {
-        foreach (var item in items)
-        {
-            item.transform.localScale = Vector3.zero;
+    //IEnumerator ItemsAnimation()
+    //{
+    //    foreach (var item in items)
+    //    {
+    //        item.transform.localScale = Vector3.zero;
 
-        }
-        foreach (var item in items)
-        {
-            item.transform.DOScale(1, fadeTime).SetEase(Ease.OutBounce);
-            yield return new WaitForSeconds(0.2f);
+    //    }
+    //    foreach (var item in items)
+    //    {
+    //        item.transform.DOScale(1, fadeTime).SetEase(Ease.OutBounce);
+    //        yield return new WaitForSeconds(0.2f);
 
-        }
-    }
+    //    }
+    //}
 }
