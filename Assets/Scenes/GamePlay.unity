@@ -3615,7 +3615,6 @@ MonoBehaviour:
   fadeTime: 0.7
   canvasGroup: {fileID: 1711699635}
   rectTransform: {fileID: 1711699632}
-  items: []
 --- !u!1 &1767160906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4092,7 +4091,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!224 &1872885852
 RectTransform:

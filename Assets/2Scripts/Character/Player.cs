@@ -68,7 +68,7 @@ public class Player : Character
     {
         if (collision.gameObject.CompareTag(Const.speedUp))
         {
-            speedMove += speedMove / 3;
+            speedMove += 1;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.enemy) || collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
