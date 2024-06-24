@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     public int countEnemy = 0;
     private UiPanelDotween panelWin;
 
-    Vector2 corner1 = new Vector2(5f, 5f);
-    Vector2 corner2 = new Vector2(5f, -5f);
-    Vector2 corner3 = new Vector2(-7f, -5f);
+    Vector2 corner1 = new Vector2(5f, 4f);
+    Vector2 corner2 = new Vector2(5f, -6f);
+    Vector2 corner3 = new Vector2(-7f, -6f);
 
     public static GameManager Instance;
     private void Awake()
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         DataMap dataMap = dataMaps[index];
 
         if (dataMap.prefabMap != null)
-            Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -0.5f), Quaternion.identity);
+            Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
 
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
 
