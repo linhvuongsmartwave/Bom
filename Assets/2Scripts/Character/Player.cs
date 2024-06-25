@@ -121,7 +121,13 @@ public class Player : Character
 
     public void Die()
     {
+        anm.SetBool("Die",true);
         Debug.Log("Die");
+    }
+
+    void DestroyPlayer()
+    {
+        Destroy(this.gameObject);
     }
 
     public void heal(int damage)
