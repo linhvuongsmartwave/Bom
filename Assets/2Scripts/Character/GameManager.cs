@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int levelStart;
     public int countEnemy = 0;
     private UiPanelDotween panelWin;
+    public UiPanelDotween panelLose;
+    public bool isRun=true;
 
     Vector2 corner1 = new Vector2(5f, 4f);
     Vector2 corner2 = new Vector2(5f, -6f);
@@ -25,7 +27,8 @@ public class GameManager : MonoBehaviour
         LoadReSoure();
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
         else Debug.LogError("dont can load data");
-        panelWin = GameObject.FindObjectOfType<UiPanelDotween>();
+        panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
+        panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
     }
     void LoadReSoure()
     {
@@ -68,6 +71,8 @@ public class GameManager : MonoBehaviour
             if(panelWin!=null) panelWin.PanelFadeIn();
         }
     }
+
+    
 
 
     void LoadMap(int index)

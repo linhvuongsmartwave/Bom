@@ -11,6 +11,9 @@ public class Const : MonoBehaviour
     public const string enemy= "Enemy";
     public const string bom= "Bom";
     public const string pushBom= "PushBom";
+    public const string panelWin= "PanelWin";
+    public const string panelLose= "PanelLose";
+
 
 
 }

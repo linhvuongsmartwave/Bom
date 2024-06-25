@@ -15,7 +15,6 @@ public class Brick : MonoBehaviour
         if (collision.gameObject.CompareTag(Const.effectEnemy) || collision.gameObject.CompareTag(Const.effectPlayer))
         {
             Invoke(nameof(PlayAnim), 0.5f);
-            //Destroy(this.gameObject);
         }
     }
 

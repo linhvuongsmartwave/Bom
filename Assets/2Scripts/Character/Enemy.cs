@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Character
 {
     public TypeEnemy typeEnemy;
-    int bossHp=3;
+    int bossHp = 3;
     public enum TypeEnemy
     {
         boss,
@@ -44,7 +44,7 @@ public class Enemy : Character
     {
         if (collision.gameObject.CompareTag(Const.effectPlayer))
         {
-            if (typeEnemy==TypeEnemy.boss)
+            if (typeEnemy == TypeEnemy.boss)
             {
                 bossHp--;
                 if (bossHp <= 0) Destroy(this.gameObject);
@@ -57,7 +57,11 @@ public class Enemy : Character
     {
         if (bomRemaining > 0)
         {
-            StartCoroutine(PlaceBom());
+            if (GameManager.Instance.isRun)
+            {
+
+                StartCoroutine(PlaceBom());
+            }
         }
     }
 
@@ -109,6 +113,7 @@ public class Enemy : Character
 
     public void Update()
     {
+
         movement = movementDirection;
 
         anm.SetFloat("Horizontal", movement.x);
@@ -119,7 +124,11 @@ public class Enemy : Character
 
     public void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
+        if (GameManager.Instance.isRun)
+        {
+
+            rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
+        }
     }
 
     private void CheckForObstacles()
