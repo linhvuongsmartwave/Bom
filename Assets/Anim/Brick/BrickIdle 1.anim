@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bom
+  m_Name: BrickIdle 1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e87cbb35e8c94dc4ba1b12a5a8568e98, type: 3}
-    - time: 0.1
-      value: {fileID: 21300000, guid: 74c067c8988a1cd4fad1a33ffe8e0bee, type: 3}
-    - time: 0.2
-      value: {fileID: 21300000, guid: 70242ef9beb1586489496a31bc20ff1e, type: 3}
-    - time: 0.3
-      value: {fileID: 21300000, guid: 74c067c8988a1cd4fad1a33ffe8e0bee, type: 3}
+      value: {fileID: 21300000, guid: 2d1e5b745474b8b4bbb77b40b079d5b0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,16 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e87cbb35e8c94dc4ba1b12a5a8568e98, type: 3}
-    - {fileID: 21300000, guid: 74c067c8988a1cd4fad1a33ffe8e0bee, type: 3}
-    - {fileID: 21300000, guid: 70242ef9beb1586489496a31bc20ff1e, type: 3}
-    - {fileID: 21300000, guid: 74c067c8988a1cd4fad1a33ffe8e0bee, type: 3}
+    - {fileID: 21300000, guid: 2d1e5b745474b8b4bbb77b40b079d5b0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
