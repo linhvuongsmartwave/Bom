@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public DataMap[] dataMaps;
     public ListEnemy[] listEnemy;
-    public int levelStart;
+    private int numberSelect;
+    private int numberLevel;
+    public TextMeshProUGUI level;
     public int countEnemy = 0;
     private UiPanelDotween panelWin;
     public UiPanelDotween panelLose;
-    public bool isRun=true;
+    public bool isPause=true;
 
     Vector2 corner1 = new Vector2(5f, 4f);
     Vector2 corner2 = new Vector2(5f, -6f);
@@ -20,15 +23,33 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        numberSelect = PlayerPrefs.GetInt("SelectedLevel", 0);
+        numberLevel = PlayerPrefs.GetInt("CompletedLevel", 0);
+
     }
 
     void Start()
     {
         LoadReSoure();
-        if (dataMaps != null && dataMaps.Length > 0) LoadMap(levelStart);
+        if (dataMaps != null && dataMaps.Length > 0) LoadMap(numberSelect);
         else Debug.LogError("dont can load data");
+
         panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
         panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
+    }
+    void LoadMap(int index)
+    {
+        if (index < 0 || index >= dataMaps.Length) return;
+        DataMap dataMap = dataMaps[index];
+
+        if (dataMap.prefabMap != null)
+            Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
+
+        else Debug.LogError("Prefab map chưa được gán trong DataMap.");
+
+        LoadEnemy(index);
+        level.text = (index + 1).ToString();
+
     }
     void LoadReSoure()
     {
@@ -72,25 +93,56 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-
-
-    void LoadMap(int index)
+    private void Update()
     {
-        if (index < 0 || index >= dataMaps.Length) return;
-        DataMap dataMap = dataMaps[index];
-
-        if (dataMap.prefabMap != null)
-            Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
-
-        else Debug.LogError("Prefab map chưa được gán trong DataMap.");
-
-        LoadEnemy(index);
+        Debug.Log("numberSelect : "+ numberSelect);
+        Debug.Log("numberLevel: "+ numberLevel);
     }
 
     public void NextLevel()
     {
-        int nextLevel = levelStart + 1;
-        LoadMap(nextLevel);
+        numberSelect++;
+        if (numberSelect > numberLevel) numberLevel++;
+        else return;
+        LoadMap(numberLevel);
+        if (numberLevel >= numberSelect)
+        {
+            PlayerPrefs.SetInt("CompletedLevel", numberLevel);
+            PlayerPrefs.Save();
+        }
+
+
+        
     }
+
+    public void Replay()
+    {
+        LoadMap(numberSelect);
+    }
+
+    //public void ClearLevel()
+    //{
+    //    // Tìm và hủy tất cả các đối tượng thuộc loại DataMap
+    //    DataMap[] maps = FindObjectsOfType<DataMap>();
+    //    foreach (DataMap map in maps)
+    //    {
+    //        Destroy(map.gameObject);
+    //    }
+
+    //    // Tìm và hủy tất cả các đối tượng thuộc loại ListEnemy (kẻ thù)
+    //    ListEnemy[] enemies = FindObjectsOfType<ListEnemy>();
+    //    foreach (ListEnemy enemy in enemies)
+    //    {
+    //        Destroy(enemy.gameObject);
+    //    }
+
+    //    // Tìm và hủy đối tượng người chơi (giả sử có tag là "Player")
+    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //    if (player != null)
+    //    {
+    //        Destroy(player);
+    //    }
+
+    //    Debug.Log("ClearLevel: Đã hủy tất cả các đối tượng bản đồ, kẻ thù và người chơi.");
+    //}
 }

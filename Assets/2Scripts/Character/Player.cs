@@ -122,17 +122,13 @@ public class Player : Character
     public void Die()
     {
         anm.SetBool("Die",true);
-        Invoke("Lose",2f);
-        GameManager.Instance.isRun = false;
-
-    }
-    void Lose()
-    {
         GameManager.Instance.panelLose.PanelFadeIn();
+        GameManager.Instance.isPause = false;
 
     }
+ 
 
-    void DestroyPlayer()
+    void EventAnimDestroy()
     {
         Destroy(this.gameObject);
     }

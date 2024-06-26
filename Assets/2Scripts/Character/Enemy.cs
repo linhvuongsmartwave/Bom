@@ -57,7 +57,7 @@ public class Enemy : Character
     {
         if (bomRemaining > 0)
         {
-            if (GameManager.Instance.isRun)
+            if (GameManager.Instance.isPause)
             {
 
                 StartCoroutine(PlaceBom());
@@ -124,7 +124,7 @@ public class Enemy : Character
 
     public void FixedUpdate()
     {
-        if (GameManager.Instance.isRun)
+        if (GameManager.Instance.isPause)
         {
 
             rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
