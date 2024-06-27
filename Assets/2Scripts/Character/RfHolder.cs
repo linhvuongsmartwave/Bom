@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class RfHolder : MonoBehaviour
 {
+    public static RfHolder Instance;
     private BomControl bomControl;
     private Player player;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         bomControl = FindObjectOfType<BomControl>();
@@ -18,7 +24,9 @@ public class RfHolder : MonoBehaviour
     }
     public void BomAmount()
     {
+        Debug.Log("BomAmount");
         bomControl.bomRemaining += 1;
+        Debug.Log("bomRemaining : "+ bomControl.bomRemaining);
     }
     public void Radius()
     {
