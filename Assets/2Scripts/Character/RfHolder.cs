@@ -18,6 +18,7 @@ public class RfHolder : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
+
     public void PutBom()
     {
         bomControl.PutBom();
@@ -26,7 +27,7 @@ public class RfHolder : MonoBehaviour
     {
         Debug.Log("BomAmount");
         bomControl.bomRemaining += 1;
-        Debug.Log("bomRemaining : "+ bomControl.bomRemaining);
+        Debug.Log("bomRemaining : " + bomControl.bomRemaining);
     }
     public void Radius()
     {

@@ -9,6 +9,6 @@ public class Shop : MonoBehaviour
 
     public void BuyBom()
     {
-        RfHolder.Instance.BomAmount();
+        
     }
 }
