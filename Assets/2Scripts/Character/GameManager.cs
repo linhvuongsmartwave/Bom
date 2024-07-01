@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public UiPanelDotween panelLose;
     public bool isPause=true;
 
+    public GameObject[] playerPrefabs;
+    int characterIndex;
+
     Vector2 corner1 = new Vector2(5f, 4f);
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
@@ -27,7 +30,6 @@ public class GameManager : MonoBehaviour
         numberLevel = PlayerPrefs.GetInt("CompletedLevel", 0);
 
     }
-
     void Start()
     {
         LoadReSoure();
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     void LoadMap(int index)
     {
+        SpawnPlayer();
         if (index < 0 || index >= dataMaps.Length) return;
         DataMap dataMap = dataMaps[index];
 
@@ -50,6 +53,11 @@ public class GameManager : MonoBehaviour
         LoadEnemy(index);
         level.text = (index + 1).ToString();
 
+    }
+    void SpawnPlayer()
+    {
+        characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
+        Instantiate(playerPrefabs[characterIndex], new Vector2(-7, 5), Quaternion.identity);
     }
     void LoadReSoure()
     {
@@ -93,6 +101,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        isPause= false;
+    } 
+    public void Resume()
+    {
+        isPause= true;
+    }
     private void Update()
     {
         Debug.Log("numberSelect : "+ numberSelect);
