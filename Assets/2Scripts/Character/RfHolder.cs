@@ -14,8 +14,14 @@ public class RfHolder : MonoBehaviour
     }
     void Start()
     {
-        bomControl = FindObjectOfType<BomControl>();
+        FindBomControl();
         player = FindObjectOfType<Player>();
+    }
+
+    public void FindBomControl()
+    {
+        bomControl = FindObjectOfType<BomControl>();
+
     }
 
 

@@ -15,7 +15,7 @@ public class PickCharacter : MonoBehaviour
         pickCharacter=GetComponent<PickCharacter>();
         male.SetActive(true);
         feMale.SetActive(true);
-        Invoke("Wait", 1f);
+        Invoke("Wait", 0.5f);
     }
     void Start()
     {
