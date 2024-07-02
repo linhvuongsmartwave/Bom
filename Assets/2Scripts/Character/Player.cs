@@ -28,7 +28,7 @@ public class Player : Character
         base.Start();
         if (typePlayer==TypePlayer.speedPlayer)
         {
-            speedMove += 5;
+            speedMove +=2;
         }
     }
     public  void Update()
@@ -68,7 +68,7 @@ public class Player : Character
     {
         if (collision.gameObject.CompareTag(Const.speedUp))
         {
-            speedMove += 1;
+            speedMove += 0.5f;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.enemy) || collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)

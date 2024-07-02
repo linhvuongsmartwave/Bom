@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,15 @@ public class RfHolder : MonoBehaviour
     public void FindBomControl()
     {
         bomControl = FindObjectOfType<BomControl>();
+        if (bomControl !=null)
+        {
+            print("tìm thấy thằng chứa script bom để đặt bom");
+        }
+        else
+        {
+            print("không tìm thấy thằng chữa script bom để đặt bom");
+
+        }
 
     }
 

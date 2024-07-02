@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
 
-    private List<GameObject> listE = new List<GameObject>();
-    private List<GameObject> listM = new List<GameObject>();
-    private List<GameObject> listP = new List<GameObject>();
+    public List<GameObject> listE = new List<GameObject>();
+    public List<GameObject> listM = new List<GameObject>();
+    public List<GameObject> listP = new List<GameObject>();
 
     public static GameManager Instance;
 
@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
         if (dataMap.prefabMap != null)
         {
             GameObject map = Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
-            Debug.Log(map.transform.position);
             listM.Add(map);
         }
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
@@ -139,7 +138,10 @@ public class GameManager : MonoBehaviour
         Clear();
         numberSelect++;
         if (numberSelect > numberLevel) numberLevel++;
-        else return;
+        else
+        {
+            numberLevel= numberSelect++;
+        }
         LoadMap(numberLevel);
         if (numberLevel >= numberSelect)
         {
@@ -162,10 +164,6 @@ public class GameManager : MonoBehaviour
         foreach (GameObject obj in listP)
         {
             Destroy(obj);
-        }
-        foreach (GameObject obj in listE)
-        {
-            obj.SetActive(false);
         }
         foreach (GameObject obj in listM)
         {

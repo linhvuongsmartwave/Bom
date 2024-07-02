@@ -21,7 +21,6 @@ public class PickCharacter : MonoBehaviour
     {
         isPick = PlayerPrefs.GetInt("isPick",1)==1;
         int selectedCharacter = PlayerPrefs.GetInt("male", 0);
-        Debug.Log(isPick);
         if (isPick)
         {
             pickCharacter.gameObject.SetActive(true);
