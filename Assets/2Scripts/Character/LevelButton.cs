@@ -18,6 +18,7 @@ public class LevelButton : MonoBehaviour
     private bool canClick = true;
     public void OnButtonClick()
     {
+        AudioManager.Instance.AudioButtonClick();
         if (canClick)
         {
             PlayerPrefs.SetInt("SelectedLevel", numLevel);

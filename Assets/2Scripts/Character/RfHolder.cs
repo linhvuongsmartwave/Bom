@@ -21,7 +21,7 @@ public class RfHolder : MonoBehaviour
     public void FindBomControl()
     {
         bomControl = FindObjectOfType<BomControl>();
-        if (bomControl !=null)
+        if (bomControl != null)
         {
             print("tìm thấy thằng chứa script bom để đặt bom");
         }
@@ -52,4 +52,15 @@ public class RfHolder : MonoBehaviour
     {
         player.speedMove += 2;
     }
+
+    public void BtnClick()
+    {
+        AudioManager.Instance.AudioButtonClick();
+    }
+    public void OpenPopup()
+    {
+        AudioManager.Instance.AudioOpen();
+    }
+
+
 }

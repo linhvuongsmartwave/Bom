@@ -22,6 +22,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void Next()
     {
+        AudioManager.Instance.AudioButtonClick();
         skins[characterSelect].SetActive(false);
         characterSelect++;
         if (characterSelect == skins.Length) characterSelect = 0;
@@ -37,6 +38,7 @@ public class CharacterSelect : MonoBehaviour
     }
     public void Back()
     {
+        AudioManager.Instance.AudioButtonClick();
         skins[characterSelect].SetActive(false);
         characterSelect--;
         if (characterSelect == -1) characterSelect = skins.Length - 1;
@@ -53,6 +55,7 @@ public class CharacterSelect : MonoBehaviour
     public void BuyCharacter(int characterIndex)
     {
 
+        AudioManager.Instance.AudioButtonClick();
         PlayerPrefs.SetInt("Character_" + (characterIndex) + "_Bought", 1);
         buttons[characterIndex].SetActive(false);
     }
