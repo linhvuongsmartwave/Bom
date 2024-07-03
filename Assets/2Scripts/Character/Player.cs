@@ -28,7 +28,7 @@ public class Player : Character
         base.Start();
         if (typePlayer==TypePlayer.speedPlayer)
         {
-            speedMove +=2;
+            speedMove +=1;
         }
     }
     public  void Update()

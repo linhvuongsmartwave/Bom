@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public UiPanelDotween panelLose;
     public bool isPause = true;
 
-    public GameObject[] playerPrefabs;
+    public GameObject[] male;
+    public GameObject[] feMale;
     int characterIndex;
 
     Vector2 corner1 = new Vector2(5f, 4f);
@@ -66,9 +67,20 @@ public class GameManager : MonoBehaviour
 
     void SpawnPlayer()
     {
+        int i = PlayerPrefs.GetInt("male");
+        if (i==1)
+        {
+
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
-        GameObject player = Instantiate(playerPrefabs[characterIndex], new Vector2(-7, 5), Quaternion.identity);
+        GameObject player = Instantiate(male[characterIndex], new Vector2(-7, 5), Quaternion.identity);
         listP.Add(player);
+        }
+        else
+        {
+            characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
+            GameObject player = Instantiate(feMale[characterIndex], new Vector2(-7, 5), Quaternion.identity);
+            listP.Add(player);
+        }
     }
 
     void LoadReSoure()
@@ -166,8 +178,19 @@ public class GameManager : MonoBehaviour
     public void Replay()
     {
         Clear();
+        ClearEnemy();
         LoadMap(numberSelect);
         RfHolder.Instance.FindBomControl();
+
+    }
+    public void ClearEnemy()
+    {
+        foreach (GameObject obj in listE)
+        {
+            print("chay den day");
+            Destroy(obj);
+        }
+        listE.Clear();
 
     }
 
@@ -190,7 +213,6 @@ public class GameManager : MonoBehaviour
 
         }
 
-        listE.Clear();
         listM.Clear();
         listP.Clear();
     }
