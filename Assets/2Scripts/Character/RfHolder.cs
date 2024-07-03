@@ -61,6 +61,14 @@ public class RfHolder : MonoBehaviour
     {
         AudioManager.Instance.AudioOpen();
     }
+    public void IconFalse()
+    {
+        bomControl.IconFalse();
+    } 
+    public void IconTrue()
+    {
+        bomControl.IconTrue();
+    }
 
 
 }

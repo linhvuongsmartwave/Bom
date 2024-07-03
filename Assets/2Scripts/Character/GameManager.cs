@@ -90,12 +90,20 @@ public class GameManager : MonoBehaviour
 
         if (currentLevel.enemies.Count >= 3)
         {
-            GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-            GameObject enemy2 = Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
-            GameObject enemy3 = Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
-            listE.Add(enemy1);
-            listE.Add(enemy2);
-            listE.Add(enemy3);
+            if (listE.Count > 0)
+            {
+                return;
+            }
+            else
+            {
+
+                GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
+                GameObject enemy2 = Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
+                GameObject enemy3 = Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
+                listE.Add(enemy1);
+                listE.Add(enemy2);
+                listE.Add(enemy3);
+            }
         }
         else if (currentLevel.enemies.Count == 1)
         {
@@ -113,7 +121,11 @@ public class GameManager : MonoBehaviour
         countEnemy--;
         if (countEnemy <= 0)
         {
-            if (panelWin != null) panelWin.PanelFadeIn();
+            if (panelWin != null)
+            {
+                panelWin.PanelFadeIn();
+                RfHolder.Instance.IconTrue();
+            }
         }
     }
 
@@ -140,7 +152,7 @@ public class GameManager : MonoBehaviour
         if (numberSelect > numberLevel) numberLevel++;
         else
         {
-            numberLevel= numberSelect++;
+            numberLevel = numberSelect++;
         }
         LoadMap(numberLevel);
         if (numberLevel >= numberSelect)
@@ -165,6 +177,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(obj);
         }
+        //if (listE.Count >0)
+        //{
+        //    foreach (GameObject obj in listE)
+        //    {
+        //        obj.SetActive(false);
+        //    }
+        //}
         foreach (GameObject obj in listM)
         {
             Destroy(obj);

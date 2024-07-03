@@ -14,12 +14,15 @@ public class BomControl : MonoBehaviour
     [Header("Effect")]
     public Explosion effect;
     public float duration = 1f;
-    public int radius ;
+    public int radius;
+
+    private GameObject iconPushBom;
 
     private void Start()
     {
         radius = 1;
         bomRemaining = 1;
+        iconPushBom = GameObject.Find("False");
     }
 
 
@@ -106,7 +109,17 @@ public class BomControl : MonoBehaviour
         {
             isPushBom = true;
             Destroy(collision.gameObject);
+            IconFalse();
         }
+    }
+
+    public void IconFalse()
+    {
+        iconPushBom.SetActive(false);
+    } 
+    public void IconTrue()
+    {
+        iconPushBom.SetActive(true);
     }
 
     IEnumerator VibrateCamera(float duration, float magnitude)
