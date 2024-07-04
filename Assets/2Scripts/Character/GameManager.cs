@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
 
+    public SceneFader sceneFader;
+
     bool canWin = true;
 
     public static GameManager Instance;
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour
     }
     public void Replay()
     {
-        SceneManager.LoadScene("GamePlay");
+        sceneFader.FadeTo("GamePlay");
     }
 
     public void NextLevel()
@@ -128,7 +130,8 @@ public class GameManager : MonoBehaviour
         numberSelect++;
         if (numberSelect > numberLevel) numberLevel++;
         else numberLevel = numberSelect;
-        SceneManager.LoadScene("GamePlay");
+        sceneFader.FadeTo("GamePlay");
+
 
         PlayerPrefs.SetInt("SelectedLevel", numberSelect);
         PlayerPrefs.Save();

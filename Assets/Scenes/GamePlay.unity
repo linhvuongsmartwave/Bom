@@ -4110,9 +4110,7 @@ MonoBehaviour:
   - {fileID: 1152138477077971964, guid: 9465c85de21e85348b1fc60117e40622, type: 3}
   - {fileID: 1152138477077971964, guid: 1b66fd52ee657924987260b75d6e86ce, type: 3}
   - {fileID: 1152138477077971964, guid: e6bd94120eb231d4b80761d4088525f4, type: 3}
-  listE: []
-  listM: []
-  listP: []
+  sceneFader: {fileID: 557582491}
 --- !u!4 &1639266653
 Transform:
   m_ObjectHideFlags: 0
