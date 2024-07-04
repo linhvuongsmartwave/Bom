@@ -17,14 +17,12 @@ public class PickCharacter : MonoBehaviour
         feMale.SetActive(true);
         Invoke("Wait", 0.5f);
     }
+
     void Start()
     {
         isPick = PlayerPrefs.GetInt("isPick",1)==1;
         int selectedCharacter = PlayerPrefs.GetInt("male", 0);
-        if (isPick)
-        {
-            pickCharacter.gameObject.SetActive(true);
-        }
+        if (isPick) pickCharacter.gameObject.SetActive(true);
         else
         {
             pickCharacter.gameObject.SetActive(false);
@@ -39,12 +37,7 @@ public class PickCharacter : MonoBehaviour
                 feMale.SetActive(true);
             }
         }
-
-
-
     }
-
-
 
     public void Male()
     {
@@ -55,6 +48,7 @@ public class PickCharacter : MonoBehaviour
         PlayerPrefs.SetInt("male",1);
 
     }
+
     public void FeMale()
     {
         male.SetActive(false);
@@ -68,6 +62,5 @@ public class PickCharacter : MonoBehaviour
     void Wait()
     {
         ui.PanelFadeIn();
-
     }
 }

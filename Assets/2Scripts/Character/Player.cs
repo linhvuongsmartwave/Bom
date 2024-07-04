@@ -18,19 +18,18 @@ public class Player : Character
     bool isTakeDamage = false;
     bool canTakeDame = true;
     int touchBom = 0;
+
     private void Awake()
     {
         movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
-
     }
+
     public override void Start()
     {
         base.Start();
-        if (typePlayer==TypePlayer.speedPlayer)
-        {
-            speedMove +=1;
-        }
+        if (typePlayer==TypePlayer.speedPlayer) speedMove += 1;
     }
+
     public  void Update()
     {
         Vector2 direction = movementJoystick.Direction;
@@ -57,12 +56,11 @@ public class Player : Character
         anm.SetFloat("Vertical", movement.y);
         anm.SetFloat("Speed", movement.sqrMagnitude);
     }
+
     public  void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -109,7 +107,6 @@ public class Player : Character
             else if (typePlayer == TypePlayer.buffaloPlayer)
             {
                 heal(maxHealth/2);
-
                 if (touchBom == 2)
                 {
                     Die();
@@ -126,7 +123,6 @@ public class Player : Character
         GameManager.Instance.isPause = false;
 
     }
- 
 
     void EventAnimDestroy()
     {
@@ -137,10 +133,5 @@ public class Player : Character
     {
         currentHealth -= damage;
         sliderheath.value = currentHealth;
-
     }
-
-
-
-
 }

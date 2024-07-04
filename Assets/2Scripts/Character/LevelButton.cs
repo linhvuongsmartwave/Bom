@@ -43,22 +43,15 @@ public class LevelButton : MonoBehaviour
     private void Start()
     {
         button = GetComponent<Button>();
-        if (numLevel == nextLevel)
-        {
-            buttonImg.sprite = currentButton;
+        if (numLevel == nextLevel) buttonImg.sprite = currentButton;
 
-        }
-        else if (numLevel < nextLevel)
-        {
-            //buttonImg.sprite = playedButton;
-            buttonImg.sprite = currentButton;
-        }
+        else if (numLevel < nextLevel) buttonImg.sprite = currentButton;
+
         else
         {
             buttonImg.sprite = lockedButton;
             txtNumberLevel.gameObject.SetActive(false);
             canClick = false;
         }
-
     }
 }

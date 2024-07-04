@@ -5,16 +5,16 @@ using UnityEngine;
 public class BomControl : MonoBehaviour
 {
     [Header("Bom")]
-    public GameObject bomPrefabs;
-    public float bomFuseTime = 3f;
-    public int bomRemaining;
     bool isPushBom = false;
+    public int bomRemaining;
+    public GameObject bomPrefabs;
     public LayerMask effectLayer;
+    public float bomFuseTime = 3f;
 
     [Header("Effect")]
+    public int radius;
     public Explosion effect;
     public float duration = 1f;
-    public int radius;
 
     private GameObject iconPushBom;
 
@@ -22,59 +22,13 @@ public class BomControl : MonoBehaviour
     {
         radius = 1;
         bomRemaining = 1;
-        FindIconPushBom();
-    }
-
-    public void FindIconPushBom()
-    {
-        iconPushBom = GameObject.Find("False");
-        if (iconPushBom != null)
-        {
-            if (!iconPushBom.activeSelf) 
-            {
-                iconPushBom.SetActive(true); 
-                Debug.Log("iconPushBom đã được hiện lên");
-            }
-            else
-            {
-                Debug.Log("iconPushBom đã hoạt động");
-            }
-        }
-        else
-        {
-            Debug.Log("không tìm thấy iconPushBom");
-        }
-
-
-        if (iconPushBom != null)
-        {
-            Debug.Log("co iconPushBom");
-        }
-        else
-        {
-            Debug.Log("khong co iconPushBom");
-
-        }
-    }
-
-
-    private void Update()
-    {
-        if (bomRemaining > 0 &&  Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(PlaceBom());
-        }
-
     }
 
     public void PutBom()
     {
-        if (bomRemaining > 0)
-        {
-
-            StartCoroutine(PlaceBom());
-        }
+        if (bomRemaining > 0) StartCoroutine(PlaceBom());
     }
+
     public IEnumerator PlaceBom()
     {
         Vector2 position = transform.position;
@@ -82,10 +36,7 @@ public class BomControl : MonoBehaviour
         position.y = Mathf.Round(position.y);
 
         Collider2D bomAlready = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask(Const.bom));
-        if (bomAlready != null)
-        {
-            yield break; 
-        }
+        if (bomAlready != null) yield break;
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
         AudioManager.Instance.CoolDown();   
@@ -95,7 +46,6 @@ public class BomControl : MonoBehaviour
         AudioManager.Instance.BomExp();
         RfHolder.Instance.Vibrate();
         position = bom.transform.position;
-
 
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
@@ -130,30 +80,16 @@ public class BomControl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isPushBom && collision.gameObject.layer == LayerMask.NameToLayer(Const.bom))
-        {
-            collision.isTrigger = false;
-        }
+        if (isPushBom && collision.gameObject.layer == LayerMask.NameToLayer(Const.bom)) collision.isTrigger = false;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Const.pushBom))
         {
             isPushBom = true;
             Destroy(collision.gameObject);
-            IconFalse();
         }
-    }
-
-    public void IconFalse()
-    {
-        FindIconPushBom();
-        iconPushBom.SetActive(false);
-    } 
-    public void IconTrue()
-    {
-        FindIconPushBom();
-        iconPushBom.SetActive(true);
     }
 
     IEnumerator VibrateCamera(float duration, float magnitude)

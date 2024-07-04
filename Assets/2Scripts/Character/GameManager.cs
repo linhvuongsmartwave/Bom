@@ -8,30 +8,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public DataMap[] dataMaps;
-    public ListEnemy[] listEnemy;
-    private int numberSelect;
     private int numberLevel;
-    public TextMeshProUGUI level;
-    public int countEnemy = 0;
-    private UiPanelDotween panelWin;
-    public UiPanelDotween panelLose;
-    public bool isPause = true;
+    private int numberSelect;
+    private int countEnemy = 0;
+    private int characterIndex;
 
     public GameObject[] male;
     public GameObject[] feMale;
-    int characterIndex;
 
+    public DataMap[] dataMaps;
+    public bool isPause = true;
+    private bool canWin = true;
+    public ListEnemy[] listEnemy;
+    public TextMeshProUGUI level;
+    private UiPanelDotween panelWin;
+    public UiPanelDotween panelLose;
     Vector2 corner1 = new Vector2(5f, 4f);
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
 
     public SceneFader sceneFader;
-
-    bool canWin = true;
-
     public static GameManager Instance;
-
     private void Awake()
     {
         Instance = this;
@@ -43,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         LoadReSoure();
         if (dataMaps != null && dataMaps.Length > 0) LoadMap(numberSelect);
-        else Debug.LogError("Cannot load data");
 
         panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
         panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
@@ -51,17 +47,13 @@ public class GameManager : MonoBehaviour
 
     void LoadMap(int index)
     {
-
         SpawnPlayer();
         if (index < 0 || index >= dataMaps.Length) return;
         DataMap dataMap = dataMaps[index];
-
         if (dataMap.prefabMap != null)
         {
             GameObject map = Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
         }
-        else Debug.LogError("Prefab map chưa được gán trong DataMap.");
-
         LoadEnemy(index);
         level.text = (index + 1).ToString();
     }
@@ -69,16 +61,9 @@ public class GameManager : MonoBehaviour
     void SpawnPlayer()
     {
         int i = PlayerPrefs.GetInt("male");
-        if (i == 1)
-        {
-            characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
-            GameObject player = Instantiate(male[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-        }
-        else
-        {
-            characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
-            GameObject player = Instantiate(feMale[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-        }
+        characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
+        GameObject[] characterArray = (i == 1) ? male : feMale;
+        GameObject player = Instantiate(characterArray[characterIndex], new Vector2(-7, 5), Quaternion.identity);
     }
 
     void LoadReSoure()
@@ -89,26 +74,13 @@ public class GameManager : MonoBehaviour
 
     void LoadEnemy(int levelIndex)
     {
-        if (listEnemy == null || listEnemy.Length <= levelIndex)
-        {
-            Debug.LogError("Invalid level index or levels not set.");
-            return;
-        }
-
+        if (listEnemy == null || listEnemy.Length <= levelIndex) return;
         ListEnemy currentLevel = listEnemy[levelIndex];
-
-        if (currentLevel.enemies.Count >= 3)
+        Vector2[] corners = { corner1, corner2, corner3 };
+        for (int i = 0; i < currentLevel.enemies.Count && i < corners.Length; i++)
         {
-            GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-            GameObject enemy2 = Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
-            GameObject enemy3 = Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
+            Instantiate(currentLevel.enemies[i], corners[i], Quaternion.identity);
         }
-        else if (currentLevel.enemies.Count == 1)
-        {
-            GameObject enemy = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-        }
-        else
-            Debug.Log("Not enough enemies in the level to instantiate at all corners.");
         countEnemy = currentLevel.enemies.Count;
     }
 
@@ -131,11 +103,8 @@ public class GameManager : MonoBehaviour
         if (numberSelect > numberLevel) numberLevel++;
         else numberLevel = numberSelect;
         sceneFader.FadeTo("GamePlay");
-
-
         PlayerPrefs.SetInt("SelectedLevel", numberSelect);
         PlayerPrefs.Save();
-
         if (numberLevel >= numberSelect)
         {
             PlayerPrefs.SetInt("CompletedLevel", numberLevel);
