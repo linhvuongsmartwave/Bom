@@ -24,20 +24,13 @@ public class LevelButton : MonoBehaviour
             PlayerPrefs.SetInt("SelectedLevel", numLevel);
             PlayerPrefs.Save();
             sceneFader.FadeTo("GamePlay");
-            //SceneManager.LoadScene("GamePlay");
-            //AudioManager.Instance.AudioButtonClick();
         }
-        //else
-        //{
-        //    RfHolder.Instance.panelMessageLocked.SetActive(true);
-        //    AudioManager.Instance.AudioButtonClick();
-        //}
+
     }
 
     private void Awake()
     {
         Assert.IsNotNull(currentButton);
-        //Assert.IsNotNull(playedButton);
         Assert.IsNotNull(lockedButton);
         Assert.IsNotNull(buttonImg);
         Assert.IsNotNull(txtNumberLevel);

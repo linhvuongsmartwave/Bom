@@ -26,10 +26,6 @@ public class GameManager : MonoBehaviour
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
 
-    //public List<GameObject> listE = new List<GameObject>();
-    //public List<GameObject> listM = new List<GameObject>();
-    //public List<GameObject> listP = new List<GameObject>();
-
     bool canWin = true;
 
     public static GameManager Instance;
@@ -61,7 +57,6 @@ public class GameManager : MonoBehaviour
         if (dataMap.prefabMap != null)
         {
             GameObject map = Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
-            //listM.Add(map);
         }
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
 
@@ -74,16 +69,13 @@ public class GameManager : MonoBehaviour
         int i = PlayerPrefs.GetInt("male");
         if (i == 1)
         {
-
             characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
             GameObject player = Instantiate(male[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-            //listP.Add(player);
         }
         else
         {
             characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
             GameObject player = Instantiate(feMale[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-            //listP.Add(player);
         }
     }
 
@@ -103,7 +95,6 @@ public class GameManager : MonoBehaviour
 
         ListEnemy currentLevel = listEnemy[levelIndex];
 
-
         if (currentLevel.enemies.Count >= 3)
         {
             GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
@@ -113,70 +104,30 @@ public class GameManager : MonoBehaviour
         else if (currentLevel.enemies.Count == 1)
         {
             GameObject enemy = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-            //listE.Add(enemy);
         }
         else
-        {
             Debug.Log("Not enough enemies in the level to instantiate at all corners.");
-        }
         countEnemy = currentLevel.enemies.Count;
-        //DOVirtual.DelayedCall(3F, () =>
-
-        //canWin = true
-        //    );
-
-        //Debug.Log("COUnt1 : " + listE.Count);
     }
 
     public void OnEnemyDestroyed()
     {
-
         countEnemy--;
-        //Debug.Log("countEnemy : " + countEnemy);
         if (canWin)
         {
-            if (countEnemy <= 0)
-            {
-                if (panelWin != null)
-                {
-                    panelWin.PanelFadeIn();
-                    //RfHolder.Instance.IconTrue();
-                }
-            }
+            if (countEnemy <= 0) if (panelWin != null) panelWin.PanelFadeIn();
         }
     }
     public void Replay()
     {
-        //canWin = false;
-        //Clear();
-        //ClearEnemy();
-        //LoadMap(numberSelect);
-        ////Debug.Log("COUnt : " + listE.Count);
-        //RfHolder.Instance.FindBomControl();
-        //RfHolder.Instance.IconTrue();
-
         SceneManager.LoadScene("GamePlay");
-
-
-    }
-    public void Update()
-    {
-        //    Debug.Log("numberSelect: "+ numberSelect);
-        //    Debug.Log("numberLevel: "+ numberLevel);
-        Debug.Log("countEnemy: " + countEnemy);
     }
 
     public void NextLevel()
     {
-        //Clear();
         numberSelect++;
         if (numberSelect > numberLevel) numberLevel++;
-        else
-        {
-            numberLevel = numberSelect;
-        }
-
-        //LoadMap(numberLevel);
+        else numberLevel = numberSelect;
         SceneManager.LoadScene("GamePlay");
 
         PlayerPrefs.SetInt("SelectedLevel", numberSelect);
@@ -187,39 +138,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("CompletedLevel", numberLevel);
             PlayerPrefs.Save();
         }
-        //RfHolder.Instance.FindBomControl();
     }
 
-    //public void ClearEnemy()
-    //{
-    //    foreach (GameObject obj in listE)
-    //    {
-    //        //obj.SetActive(false);
-    //        print("chay den day");
-
-    //        Destroy(obj);
-    //    }
-    //    listE.Clear();
-    //    countEnemy = 0;
-
-
-    //}
-
-    //public void Clear()
-    //{
-    //    foreach (GameObject obj in listP)
-    //    {
-    //        Destroy(obj);
-    //    }
-
-    //    foreach (GameObject obj in listM)
-    //    {
-    //        Destroy(obj);
-
-    //    }
-    //    listM.Clear();
-    //    listP.Clear();
-    //}
     public void Pause()
     {
         isPause = false;

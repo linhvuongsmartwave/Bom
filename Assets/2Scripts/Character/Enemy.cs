@@ -52,12 +52,6 @@ public class Enemy : Character
         }
     }
 
-    //private void RemoveEnemyFromList(GameObject enemy)
-    //{
-    //    GameManager.Instance.listE.Remove(enemy);  // Xóa đối tượng khỏi danh sách
-    //    Destroy(enemy);       // Hủy đối tượng khỏi scene (nếu cần thiết)
-    //}
-
     public void PutBom()
     {
         if (bomRemaining > 0)

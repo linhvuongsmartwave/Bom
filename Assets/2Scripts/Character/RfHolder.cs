@@ -15,26 +15,9 @@ public class RfHolder : MonoBehaviour
     }
     void Start()
     {
-        //FindBomControl();
         player = FindObjectOfType<Player>();
         bomControl = FindObjectOfType<BomControl>();
     }
-
-    //public void FindBomControl()
-    //{
-    //    bomControl = FindObjectOfType<BomControl>();
-    //    if (bomControl != null)
-    //    {
-    //        print("tìm thấy thằng chứa script bom để đặt bom");
-    //    }
-    //    else
-    //    {
-    //        print("không tìm thấy thằng chữa script bom để đặt bom");
-
-    //    }
-
-    //}
-
 
     public void PutBom()
     {
@@ -61,16 +44,6 @@ public class RfHolder : MonoBehaviour
     {
         AudioManager.Instance.AudioOpen();
     }
-    //public void IconFalse()
-    //{
-    //    FindBomControl();
-    //    bomControl.IconFalse();
-    //} 
-    //public void IconTrue()
-    //{
-    //    FindBomControl();
-    //    bomControl.IconTrue();
-    //}
     public void Vibrate()
     {
         HapticFeedback.LightFeedback();
