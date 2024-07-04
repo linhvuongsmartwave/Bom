@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CandyCoded.HapticFeedback;
 
 public class RfHolder : MonoBehaviour
 {
@@ -14,24 +15,25 @@ public class RfHolder : MonoBehaviour
     }
     void Start()
     {
-        FindBomControl();
+        //FindBomControl();
         player = FindObjectOfType<Player>();
-    }
-
-    public void FindBomControl()
-    {
         bomControl = FindObjectOfType<BomControl>();
-        if (bomControl != null)
-        {
-            print("tìm thấy thằng chứa script bom để đặt bom");
-        }
-        else
-        {
-            print("không tìm thấy thằng chữa script bom để đặt bom");
-
-        }
-
     }
+
+    //public void FindBomControl()
+    //{
+    //    bomControl = FindObjectOfType<BomControl>();
+    //    if (bomControl != null)
+    //    {
+    //        print("tìm thấy thằng chứa script bom để đặt bom");
+    //    }
+    //    else
+    //    {
+    //        print("không tìm thấy thằng chữa script bom để đặt bom");
+
+    //    }
+
+    //}
 
 
     public void PutBom()
@@ -40,9 +42,7 @@ public class RfHolder : MonoBehaviour
     }
     public void BomAmount()
     {
-        Debug.Log("BomAmount");
         bomControl.bomRemaining += 1;
-        Debug.Log("bomRemaining : " + bomControl.bomRemaining);
     }
     public void Radius()
     {
@@ -61,13 +61,19 @@ public class RfHolder : MonoBehaviour
     {
         AudioManager.Instance.AudioOpen();
     }
-    public void IconFalse()
+    //public void IconFalse()
+    //{
+    //    FindBomControl();
+    //    bomControl.IconFalse();
+    //} 
+    //public void IconTrue()
+    //{
+    //    FindBomControl();
+    //    bomControl.IconTrue();
+    //}
+    public void Vibrate()
     {
-        bomControl.IconFalse();
-    } 
-    public void IconTrue()
-    {
-        bomControl.IconTrue();
+        HapticFeedback.LightFeedback();
     }
 
 

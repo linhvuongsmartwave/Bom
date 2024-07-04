@@ -46,17 +46,17 @@ public class Enemy : Character
             if (typeEnemy == TypeEnemy.boss)
             {
                 bossHp--;
-                if (bossHp <= 0) RemoveEnemyFromList(this.gameObject);
+                if (bossHp <= 0) Destroy(this.gameObject);
             }
-            else RemoveEnemyFromList(this.gameObject);
+            else Destroy(this.gameObject);
         }
     }
 
-    private void RemoveEnemyFromList(GameObject enemy)
-    {
-        GameManager.Instance.listE.Remove(enemy);  // Xóa đối tượng khỏi danh sách
-        Destroy(enemy);       // Hủy đối tượng khỏi scene (nếu cần thiết)
-    }
+    //private void RemoveEnemyFromList(GameObject enemy)
+    //{
+    //    GameManager.Instance.listE.Remove(enemy);  // Xóa đối tượng khỏi danh sách
+    //    Destroy(enemy);       // Hủy đối tượng khỏi scene (nếu cần thiết)
+    //}
 
     public void PutBom()
     {

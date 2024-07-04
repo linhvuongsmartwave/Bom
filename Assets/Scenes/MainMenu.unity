@@ -8594,8 +8594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64228b0cf97013147b99e0fe8230a746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentButton: {fileID: 21300000, guid: 6dda578f21fbc454db9e2bb576c6240b, type: 3}
-  lockedButton: {fileID: 21300000, guid: 229e6d2aa821b964cbee716c852d6908, type: 3}
+  currentButton: {fileID: 21300000, guid: 44eb3cc4904bff54a801b8bfd6a233c5, type: 3}
+  lockedButton: {fileID: 21300000, guid: 6dda578f21fbc454db9e2bb576c6240b, type: 3}
   buttonImg: {fileID: 904121310}
   txtNumberLevel: {fileID: 1643977611}
   sceneFader: {fileID: 720390673}

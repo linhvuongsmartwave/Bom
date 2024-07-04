@@ -22,7 +22,39 @@ public class BomControl : MonoBehaviour
     {
         radius = 1;
         bomRemaining = 1;
+        FindIconPushBom();
+    }
+
+    public void FindIconPushBom()
+    {
         iconPushBom = GameObject.Find("False");
+        if (iconPushBom != null)
+        {
+            if (!iconPushBom.activeSelf) 
+            {
+                iconPushBom.SetActive(true); 
+                Debug.Log("iconPushBom đã được hiện lên");
+            }
+            else
+            {
+                Debug.Log("iconPushBom đã hoạt động");
+            }
+        }
+        else
+        {
+            Debug.Log("không tìm thấy iconPushBom");
+        }
+
+
+        if (iconPushBom != null)
+        {
+            Debug.Log("co iconPushBom");
+        }
+        else
+        {
+            Debug.Log("khong co iconPushBom");
+
+        }
     }
 
 
@@ -61,7 +93,7 @@ public class BomControl : MonoBehaviour
 
         StartCoroutine(VibrateCamera(0.2f, 0.07f));
         AudioManager.Instance.BomExp();
-
+        RfHolder.Instance.Vibrate();
         position = bom.transform.position;
 
 
@@ -115,10 +147,12 @@ public class BomControl : MonoBehaviour
 
     public void IconFalse()
     {
+        FindIconPushBom();
         iconPushBom.SetActive(false);
     } 
     public void IconTrue()
     {
+        FindIconPushBom();
         iconPushBom.SetActive(true);
     }
 

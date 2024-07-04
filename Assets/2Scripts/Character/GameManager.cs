@@ -3,6 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,9 +26,11 @@ public class GameManager : MonoBehaviour
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
 
-    public List<GameObject> listE = new List<GameObject>();
-    public List<GameObject> listM = new List<GameObject>();
-    public List<GameObject> listP = new List<GameObject>();
+    //public List<GameObject> listE = new List<GameObject>();
+    //public List<GameObject> listM = new List<GameObject>();
+    //public List<GameObject> listP = new List<GameObject>();
+
+    bool canWin = true;
 
     public static GameManager Instance;
 
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     void LoadMap(int index)
     {
-        //Clear();
+
         SpawnPlayer();
         if (index < 0 || index >= dataMaps.Length) return;
         DataMap dataMap = dataMaps[index];
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (dataMap.prefabMap != null)
         {
             GameObject map = Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
-            listM.Add(map);
+            //listM.Add(map);
         }
         else Debug.LogError("Prefab map chưa được gán trong DataMap.");
 
@@ -68,18 +72,18 @@ public class GameManager : MonoBehaviour
     void SpawnPlayer()
     {
         int i = PlayerPrefs.GetInt("male");
-        if (i==1)
+        if (i == 1)
         {
 
-        characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
-        GameObject player = Instantiate(male[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-        listP.Add(player);
+            characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
+            GameObject player = Instantiate(male[characterIndex], new Vector2(-7, 5), Quaternion.identity);
+            //listP.Add(player);
         }
         else
         {
             characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
             GameObject player = Instantiate(feMale[characterIndex], new Vector2(-7, 5), Quaternion.identity);
-            listP.Add(player);
+            //listP.Add(player);
         }
     }
 
@@ -98,49 +102,124 @@ public class GameManager : MonoBehaviour
         }
 
         ListEnemy currentLevel = listEnemy[levelIndex];
-        countEnemy = currentLevel.enemies.Count;
+
 
         if (currentLevel.enemies.Count >= 3)
         {
-            if (listE.Count > 0)
-            {
-                return;
-            }
-            else
-            {
-
-                GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-                GameObject enemy2 = Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
-                GameObject enemy3 = Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
-                listE.Add(enemy1);
-                listE.Add(enemy2);
-                listE.Add(enemy3);
-            }
+            GameObject enemy1 = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
+            GameObject enemy2 = Instantiate(currentLevel.enemies[1], corner2, Quaternion.identity);
+            GameObject enemy3 = Instantiate(currentLevel.enemies[2], corner3, Quaternion.identity);
         }
         else if (currentLevel.enemies.Count == 1)
         {
             GameObject enemy = Instantiate(currentLevel.enemies[0], corner1, Quaternion.identity);
-            listE.Add(enemy);
+            //listE.Add(enemy);
         }
         else
         {
             Debug.Log("Not enough enemies in the level to instantiate at all corners.");
         }
+        countEnemy = currentLevel.enemies.Count;
+        //DOVirtual.DelayedCall(3F, () =>
+
+        //canWin = true
+        //    );
+
+        //Debug.Log("COUnt1 : " + listE.Count);
     }
 
     public void OnEnemyDestroyed()
     {
+
         countEnemy--;
-        if (countEnemy <= 0)
+        //Debug.Log("countEnemy : " + countEnemy);
+        if (canWin)
         {
-            if (panelWin != null)
+            if (countEnemy <= 0)
             {
-                panelWin.PanelFadeIn();
-                RfHolder.Instance.IconTrue();
+                if (panelWin != null)
+                {
+                    panelWin.PanelFadeIn();
+                    //RfHolder.Instance.IconTrue();
+                }
             }
         }
     }
+    public void Replay()
+    {
+        //canWin = false;
+        //Clear();
+        //ClearEnemy();
+        //LoadMap(numberSelect);
+        ////Debug.Log("COUnt : " + listE.Count);
+        //RfHolder.Instance.FindBomControl();
+        //RfHolder.Instance.IconTrue();
 
+        SceneManager.LoadScene("GamePlay");
+
+
+    }
+    public void Update()
+    {
+        //    Debug.Log("numberSelect: "+ numberSelect);
+        //    Debug.Log("numberLevel: "+ numberLevel);
+        Debug.Log("countEnemy: " + countEnemy);
+    }
+
+    public void NextLevel()
+    {
+        //Clear();
+        numberSelect++;
+        if (numberSelect > numberLevel) numberLevel++;
+        else
+        {
+            numberLevel = numberSelect;
+        }
+
+        //LoadMap(numberLevel);
+        SceneManager.LoadScene("GamePlay");
+
+        PlayerPrefs.SetInt("SelectedLevel", numberSelect);
+        PlayerPrefs.Save();
+
+        if (numberLevel >= numberSelect)
+        {
+            PlayerPrefs.SetInt("CompletedLevel", numberLevel);
+            PlayerPrefs.Save();
+        }
+        //RfHolder.Instance.FindBomControl();
+    }
+
+    //public void ClearEnemy()
+    //{
+    //    foreach (GameObject obj in listE)
+    //    {
+    //        //obj.SetActive(false);
+    //        print("chay den day");
+
+    //        Destroy(obj);
+    //    }
+    //    listE.Clear();
+    //    countEnemy = 0;
+
+
+    //}
+
+    //public void Clear()
+    //{
+    //    foreach (GameObject obj in listP)
+    //    {
+    //        Destroy(obj);
+    //    }
+
+    //    foreach (GameObject obj in listM)
+    //    {
+    //        Destroy(obj);
+
+    //    }
+    //    listM.Clear();
+    //    listP.Clear();
+    //}
     public void Pause()
     {
         isPause = false;
@@ -149,71 +228,5 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         isPause = true;
-    }
-
-    private void Update()
-    {
-        Debug.Log("numberSelect: " + numberSelect);
-        Debug.Log("numberLevel: " + numberLevel);
-    }
-
-    public void NextLevel()
-    {
-        Clear();
-        numberSelect++;
-        if (numberSelect > numberLevel) numberLevel++;
-        else
-        {
-            numberLevel = numberSelect++;
-        }
-        LoadMap(numberLevel);
-        if (numberLevel >= numberSelect)
-        {
-            PlayerPrefs.SetInt("CompletedLevel", numberLevel);
-            PlayerPrefs.Save();
-        }
-        RfHolder.Instance.FindBomControl();
-    }
-
-    public void Replay()
-    {
-        Clear();
-        ClearEnemy();
-        LoadMap(numberSelect);
-        RfHolder.Instance.FindBomControl();
-
-    }
-    public void ClearEnemy()
-    {
-        foreach (GameObject obj in listE)
-        {
-            print("chay den day");
-            Destroy(obj);
-        }
-        listE.Clear();
-
-    }
-
-    public void Clear()
-    {
-        foreach (GameObject obj in listP)
-        {
-            Destroy(obj);
-        }
-        //if (listE.Count >0)
-        //{
-        //    foreach (GameObject obj in listE)
-        //    {
-        //        obj.SetActive(false);
-        //    }
-        //}
-        foreach (GameObject obj in listM)
-        {
-            Destroy(obj);
-
-        }
-
-        listM.Clear();
-        listP.Clear();
     }
 }
