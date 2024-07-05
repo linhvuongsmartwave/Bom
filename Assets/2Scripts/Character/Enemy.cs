@@ -12,6 +12,7 @@ public class Enemy : Character
         enemy
     }
 
+
     [Header("Bom")]
     public GameObject bomPrefabs;
     public float bomFuseTime = 3f;
@@ -37,8 +38,8 @@ public class Enemy : Character
     private void OnDestroy()
     {
         GameManager.Instance.OnEnemyDestroyed();
-    }
 
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Const.effectPlayer))
@@ -57,33 +58,29 @@ public class Enemy : Character
         if (bomRemaining > 0)
         {
             if (GameManager.Instance.isPause)
+            {
+
                 StartCoroutine(PlaceBom());
+            }
         }
     }
 
-    private IEnumerator PlaceBom()
+    public IEnumerator PlaceBom()
     {
         Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
         Collider2D existingBom = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
-        if (existingBom != null) yield break;
+        if (existingBom != null)
+        {
+            yield break;
+        }
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
-
-        GameObject coroutineRunner = new GameObject("CoroutineRunner");
-        CoroutineRunner runner = coroutineRunner.AddComponent<CoroutineRunner>();
-        runner.StartCoroutine(BomCoroutine(bom));
-
-        yield return null;
-    }
-
-    private IEnumerator BomCoroutine(GameObject bom)
-    {
         yield return new WaitForSeconds(bomFuseTime);
 
-        Vector2 position = bom.transform.position;
+        position = bom.transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
@@ -116,7 +113,9 @@ public class Enemy : Character
 
     public void Update()
     {
+
         movement = movementDirection;
+
         anm.SetFloat("Horizontal", movement.x);
         anm.SetFloat("Vertical", movement.y);
         anm.SetFloat("Speed", movement.sqrMagnitude);
@@ -126,7 +125,10 @@ public class Enemy : Character
     public void FixedUpdate()
     {
         if (GameManager.Instance.isPause)
+        {
+
             rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
+        }
     }
 
     private void CheckForObstacles()
@@ -143,13 +145,19 @@ public class Enemy : Character
         if (hitForward.collider != null)
         {
             movementDirection = GetNewDirection(movementDirection);
-        }
+            //PutBom();
 
+        }
         if (hitForward.collider != null && hitForward.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
             || hitLeft.collider != null && hitLeft.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
             || hitRight.collider != null && hitRight.collider.gameObject.layer == LayerMask.NameToLayer("Brick"))
-
+        {
             PutBom();
+        }
+
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), forward * distance, Color.red);
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), left * distance, Color.red);
+        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), right * distance, Color.red);
     }
 
     private Vector2 GetNewDirection(Vector2 currentDirection)
@@ -158,9 +166,5 @@ public class Enemy : Character
         newDirections.Remove(currentDirection);
         int randomIndex = Random.Range(0, newDirections.Count);
         return newDirections[randomIndex];
-    }
-
-    private class CoroutineRunner : MonoBehaviour
-    {
     }
 }
