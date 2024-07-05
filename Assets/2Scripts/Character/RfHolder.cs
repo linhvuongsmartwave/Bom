@@ -49,5 +49,14 @@ public class RfHolder : MonoBehaviour
         HapticFeedback.LightFeedback();
     }
 
+    public void ShowIconPushBom()
+    {
+        bomControl.ShowIconPushBom();
+    }
+    public void HideIconPushBom()
+    {
+        bomControl.HideIconPushBom();
+    }
+
 
 }

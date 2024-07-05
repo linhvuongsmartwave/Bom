@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +18,7 @@ public class Player : Character
     bool isTakeDamage = false;
     bool canTakeDame = true;
     int touchBom = 0;
+    private GameObject iconShield;
 
     private void Awake()
     {
@@ -28,6 +29,16 @@ public class Player : Character
     {
         base.Start();
         if (typePlayer==TypePlayer.speedPlayer) speedMove += 1;
+        iconShield = GameObject.Find("ShieldFalse");
+    }
+
+    public void ShowIconShield()
+    {
+        iconShield.SetActive(false);
+    }
+    public void HideIconShield()
+    {
+        iconShield.SetActive(true);
     }
 
     public  void Update()
@@ -73,12 +84,14 @@ public class Player : Character
         {
             StartCoroutine(HandleEffectCollision());
             isTakeDamage = false;
+            HideIconShield();
         }
 
         if (collision.gameObject.CompareTag(Const.shield))
         {
             isTakeDamage = true;
             Destroy(collision.gameObject);
+            ShowIconShield();
         }
     }
 
@@ -132,6 +145,5 @@ public class Player : Character
     public void heal(int damage)
     {
         currentHealth -= damage;
-        sliderheath.value = currentHealth;
     }
 }

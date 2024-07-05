@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
+    public Slider sliderheath;
+
     public TypeEnemy typeEnemy;
     int bossHp = 3;
     public enum TypeEnemy
@@ -24,6 +27,8 @@ public class Enemy : Character
     public override void Start()
     {
         base.Start();
+        sliderheath.value = currentHealth;
+
         bomRemaining = 1;
     }
 

@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public int currentHealth;
 //    public Joystick movementJoystick;
-    public Slider sliderheath;
     public CharacterData characterData;
 
 
@@ -22,7 +21,6 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         maxHealth = characterData.health;
         currentHealth = maxHealth;
-        sliderheath.value = currentHealth;
         speedMove = characterData.speedMove;
     }
 

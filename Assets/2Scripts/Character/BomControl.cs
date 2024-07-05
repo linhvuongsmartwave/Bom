@@ -22,6 +22,16 @@ public class BomControl : MonoBehaviour
     {
         radius = 1;
         bomRemaining = 1;
+        iconPushBom = GameObject.Find("ShoesFalse");
+    }
+
+    public void ShowIconPushBom()
+    {
+        iconPushBom.SetActive(false);
+    }
+    public void HideIconPushBom()
+    {
+        iconPushBom.SetActive(true);
     }
 
     public void PutBom()
@@ -39,7 +49,7 @@ public class BomControl : MonoBehaviour
         if (bomAlready != null) yield break;
         GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
         bomRemaining--;
-        AudioManager.Instance.CoolDown();   
+        AudioManager.Instance.CoolDown();
         yield return new WaitForSeconds(bomFuseTime);
 
         StartCoroutine(VibrateCamera(0.2f, 0.07f));
@@ -57,7 +67,7 @@ public class BomControl : MonoBehaviour
         Explode(position, Vector2.down, radius);
         Explode(position, Vector2.left, radius);
         Explode(position, Vector2.right, radius);
-                            
+
         Destroy(bom);
         bomRemaining++;
 
@@ -89,6 +99,7 @@ public class BomControl : MonoBehaviour
         {
             isPushBom = true;
             Destroy(collision.gameObject);
+            ShowIconPushBom();
         }
     }
 
