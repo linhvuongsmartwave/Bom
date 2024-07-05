@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public DataMap[] dataMaps;
     public bool isPause = true;
-    private bool canWin = true;
     public ListEnemy[] listEnemy;
     public TextMeshProUGUI level;
     private UiPanelDotween panelWin;
@@ -87,10 +86,7 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDestroyed()
     {
         countEnemy--;
-        if (canWin)
-        {
-            if (countEnemy <= 0) if (panelWin != null) panelWin.PanelFadeIn();
-        }
+         if (countEnemy <= 0) if (panelWin != null) panelWin.PanelFadeIn();
     }
     public void Replay()
     {
