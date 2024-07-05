@@ -140,24 +140,11 @@ public class Enemy : Character
         float distance = 0.6f;
 
         RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), forward, distance, obstacleLayer);
-        RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), left, distance, obstacleLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), right, distance, obstacleLayer);
         if (hitForward.collider != null)
         {
             movementDirection = GetNewDirection(movementDirection);
-            //PutBom();
-
-        }
-        if (hitForward.collider != null && hitForward.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
-            || hitLeft.collider != null && hitLeft.collider.gameObject.layer == LayerMask.NameToLayer("Brick")
-            || hitRight.collider != null && hitRight.collider.gameObject.layer == LayerMask.NameToLayer("Brick"))
-        {
             PutBom();
         }
-
-        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), forward * distance, Color.red);
-        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), left * distance, Color.red);
-        Debug.DrawRay(new Vector2(rb.position.x, rb.position.y - 0.2f), right * distance, Color.red);
     }
 
     private Vector2 GetNewDirection(Vector2 currentDirection)
