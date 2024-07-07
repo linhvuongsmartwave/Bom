@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6c6477ef18b24444a1074808fe2f43b, type: 3}
-  m_Name: Character
+  m_Name: buffalow
   m_EditorClassIdentifier: 
-  health: 10
+  health: 2
   speedMove: 3

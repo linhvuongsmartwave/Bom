@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     public CharacterData characterData;
 
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         anm = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -23,9 +23,4 @@ public class Character : MonoBehaviour
         currentHealth = maxHealth;
         speedMove = characterData.speedMove;
     }
-
-   
-
-   
-
 }

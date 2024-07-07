@@ -20,16 +20,17 @@ public class Player : Character
     int touchBom = 0;
     private GameObject iconShield;
 
-    private void Awake()
+    public override void Awake()
+    {
+        base.Awake();
+        //if (typePlayer==TypePlayer.speedPlayer) speedMove += 1;
+    }
+    private void OnEnable()
     {
         movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
-    }
-
-    public override void Start()
-    {
-        base.Start();
-        if (typePlayer==TypePlayer.speedPlayer) speedMove += 1;
         iconShield = GameObject.Find("ShieldFalse");
+        Debug.Log("player");
+
     }
 
     public void ShowIconShield()
@@ -108,9 +109,10 @@ public class Player : Character
         if (!isTakeDamage)
         {
             touchBom += 1;
+            currentHealth--;
             if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)
             {
-                heal(maxHealth);
+                //heal(maxHealth);
                 if (touchBom == 1)
                 {
                     Die();
@@ -119,7 +121,7 @@ public class Player : Character
             }
             else if (typePlayer == TypePlayer.buffaloPlayer)
             {
-                heal(maxHealth/2);
+                //heal(maxHealth/2);
                 if (touchBom == 2)
                 {
                     Die();
@@ -142,8 +144,8 @@ public class Player : Character
         Destroy(this.gameObject);
     }
 
-    public void heal(int damage)
-    {
-        currentHealth -= damage;
-    }
+    //public void heal(int damage)
+    //{
+    //    currentHealth -= damage;
+    //}
 }

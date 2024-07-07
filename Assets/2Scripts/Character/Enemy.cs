@@ -24,9 +24,9 @@ public class Enemy : Character
     public Vector2 movementDirection = Vector2.right;
     Vector2[] randomDirections = new Vector2[] { Vector2.down, Vector2.left, Vector2.right, Vector2.up };
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         sliderheath.value = currentHealth;
 
         bomRemaining = 1;

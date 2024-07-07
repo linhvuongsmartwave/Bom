@@ -213,7 +213,7 @@ MonoBehaviour:
   speedMove: 0
   movement: {x: 0, y: 0}
   currentHealth: 0
-  characterData: {fileID: 11400000, guid: 61d78370108c49f499c67b3af2488969, type: 2}
+  characterData: {fileID: 11400000, guid: 84a1486b9b8063d4cadabfa5c09b703a, type: 2}
   movementJoystick: {fileID: 0}
   typePlayer: 1
 --- !u!50 &8967363528890312574

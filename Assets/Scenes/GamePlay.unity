@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 153327147}
   - component: {fileID: 153327146}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtBom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,8 +630,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2412,6 +2412,7 @@ GameObject:
   - component: {fileID: 724798435}
   - component: {fileID: 724798434}
   - component: {fileID: 724798433}
+  - component: {fileID: 724798437}
   m_Layer: 5
   m_Name: CanvasUi
   m_TagString: Untagged
@@ -2503,6 +2504,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &724798437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724798432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5cf9a5401bd4041b9669ca084fdb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &730108405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +3000,7 @@ GameObject:
   - component: {fileID: 1014934634}
   - component: {fileID: 1014934633}
   m_Layer: 5
-  m_Name: heart (1)
+  m_Name: Explo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3231,7 +3244,7 @@ GameObject:
   - component: {fileID: 1044232437}
   - component: {fileID: 1044232436}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3255,7 +3268,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 31.3, y: 1.3}
-  m_SizeDelta: {x: 30, y: 20}
+  m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044232436
 MonoBehaviour:
@@ -3304,8 +3317,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3687,7 +3700,7 @@ GameObject:
   - component: {fileID: 1200209261}
   - component: {fileID: 1200209260}
   m_Layer: 5
-  m_Name: heart (2)
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3840,7 +3853,7 @@ GameObject:
   - component: {fileID: 1376706920}
   - component: {fileID: 1376706919}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3913,8 +3926,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4186,7 +4199,7 @@ GameObject:
   - component: {fileID: 1591089421}
   - component: {fileID: 1591089420}
   m_Layer: 5
-  m_Name: heart (3)
+  m_Name: Bom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5095,7 +5108,7 @@ GameObject:
   - component: {fileID: 1876388149}
   - component: {fileID: 1876388148}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5108,7 +5121,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876388146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5118,7 +5131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.3, y: 1.3}
+  m_AnchoredPosition: {x: 31.1, y: -1.2}
   m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1876388148
@@ -5168,8 +5181,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
