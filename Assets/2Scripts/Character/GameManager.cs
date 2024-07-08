@@ -33,12 +33,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
         numberSelect = PlayerPrefs.GetInt("SelectedLevel", 0);
         numberLevel = PlayerPrefs.GetInt("CompletedLevel", 0);
+        LoadReSoure();
+        if (dataMaps != null && dataMaps.Length > 0) LoadMap(numberSelect);
     }
 
     void Start()
     {
-        LoadReSoure();
-        if (dataMaps != null && dataMaps.Length > 0) LoadMap(numberSelect);
+ 
 
         panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
         panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();

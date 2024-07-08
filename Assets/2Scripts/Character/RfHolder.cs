@@ -27,27 +27,51 @@ public class RfHolder : MonoBehaviour
         player = FindObjectOfType<Player>();
         if (player != null )
         {
-            print("tim thay player rfholder");
             txtHeart.text = (player.currentHealth).ToString();
             txtSpeed.text = player.speedMove.ToString();
             txtExplosion.text = 1.ToString();
             txtBom.text = 1.ToString();
         }
+        else
+        {
+            print("khong tim thay player rfholder");
+
+        }
         bomControl = FindObjectOfType<BomControl>();
+        if (bomControl ==null)
+        {
+            print("khong tim thay bomControl rfholder");
+
+        }
     }
+
+    public void UpdateHeart()
+    {
+            txtHeart.text = (player.currentHealth).ToString();
+
+    }
+        public void UpdateSpeed()
+    {
+            txtSpeed.text = (player.speedMove).ToString();
+
+    }
+
 
     public void PutBom()
     {
         bomControl.PutBom();
     }
+
     public void BomAmount()
     {
         bomControl.bomRemaining += 1;
     }
+
     public void Radius()
     {
         bomControl.radius += 1;
     }
+
     public void Speed()
     {
         player.speedMove += 2;

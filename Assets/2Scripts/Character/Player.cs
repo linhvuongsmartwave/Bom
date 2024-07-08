@@ -14,7 +14,7 @@ public class Player : Character
         speedPlayer
     }
 
-
+    int touchshield=0;
     bool isTakeDamage = false;
     bool canTakeDame = true;
     int touchBom = 0;
@@ -42,7 +42,7 @@ public class Player : Character
         iconShield.SetActive(true);
     }
 
-    public  void Update()
+    public void Update()
     {
         Vector2 direction = movementJoystick.Direction;
         float horizontalInput = direction.x;
@@ -69,7 +69,7 @@ public class Player : Character
         anm.SetFloat("Speed", movement.sqrMagnitude);
     }
 
-    public  void FixedUpdate()
+    public void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
@@ -80,8 +80,9 @@ public class Player : Character
         {
             speedMove += 0.5f;
             Destroy(collision.gameObject);
+            RfHolder.Instance.UpdateSpeed();
         }
-        if (collision.gameObject.CompareTag(Const.effectEnemy)|| collision.gameObject.CompareTag(Const.enemy) || collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
+        if (collision.gameObject.CompareTag(Const.effectEnemy) || collision.gameObject.CompareTag(Const.enemy) || collision.gameObject.CompareTag(Const.effectPlayer) && canTakeDame)
         {
             StartCoroutine(HandleEffectCollision());
             isTakeDamage = false;
@@ -93,6 +94,20 @@ public class Player : Character
             isTakeDamage = true;
             Destroy(collision.gameObject);
             ShowIconShield();
+            if (touchshield==0)
+            {
+                currentHealth++;
+                RfHolder.Instance.UpdateHeart();
+                touchshield++;
+            }
+            else if (touchshield==1)
+            {
+                return;
+            }
+            
+         
+        
+ 
         }
     }
 
@@ -100,7 +115,7 @@ public class Player : Character
     {
         canTakeDame = false;
         TakeDamage();
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(1.0f);
         canTakeDame = true;
     }
 
@@ -110,6 +125,7 @@ public class Player : Character
         {
             touchBom += 1;
             currentHealth--;
+            RfHolder.Instance.UpdateHeart();
             if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)
             {
                 //heal(maxHealth);
@@ -133,7 +149,7 @@ public class Player : Character
 
     public void Die()
     {
-        anm.SetBool("Die",true);
+        anm.SetBool("Die", true);
         GameManager.Instance.panelLose.PanelFadeIn();
         GameManager.Instance.isPause = false;
 
