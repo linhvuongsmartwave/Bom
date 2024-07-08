@@ -17,17 +17,13 @@ public class Shop : MonoBehaviour
 
     public void BuyGold(int gold)
     {
+        AudioManager.Instance.AudioCoin();
         this.gold += gold;
         Save();
         UpdateGold();
 
 
     }
-    private void Update()
-    {
-        print("gold : "+gold);
-    }
-
 
     public void Load()
     {

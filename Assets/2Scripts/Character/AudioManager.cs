@@ -9,6 +9,8 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip coolDown;
     public AudioClip openPopup;
     public AudioClip buttonClick;
+    public AudioClip coin;
+    public AudioClip win;
 
     void Start()
     {
@@ -34,6 +36,14 @@ public class AudioManager : Singleton<AudioManager>
     public void AudioButtonClick()
     {
         audioSoure.PlayOneShot(buttonClick);
+    }
+        public void AudioCoin()
+    {
+        audioSoure.PlayOneShot(coin);
+    }
+            public void AudioWin()
+    {
+        audioSoure.PlayOneShot(win);
     }
 
     public void SetActive(bool isActive)

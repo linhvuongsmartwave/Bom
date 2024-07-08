@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using CandyCoded.HapticFeedback;
 using TMPro;
 
@@ -10,9 +11,22 @@ public class RfHolder : MonoBehaviour
     private TextMeshProUGUI txtExplosion;
     private TextMeshProUGUI txtSpeed;
     private TextMeshProUGUI txtBom;
+    private TextMeshProUGUI txtGold;
     public static RfHolder Instance;
     private BomControl bomControl;
     private Player player;
+    private int gold;
+
+
+    private GameObject confirm1;
+    private GameObject confirm2;
+    private GameObject confirm3;
+
+    private GameObject nomoney;
+
+    private Button button1;
+    private Button button2;
+    private Button button3;
 
     private void Awake()
     {
@@ -21,11 +35,19 @@ public class RfHolder : MonoBehaviour
         txtExplosion = GameObject.Find("txtExplosion").GetComponent<TextMeshProUGUI>();
         txtSpeed = GameObject.Find("txtSpeed").GetComponent<TextMeshProUGUI>();
         txtBom = GameObject.Find("txtBom").GetComponent<TextMeshProUGUI>();
+        txtGold = GameObject.Find("txtGold").GetComponent<TextMeshProUGUI>();
+        confirm1 = GameObject.Find("confirm1");
+        confirm2 = GameObject.Find("confirm2");
+        confirm3 = GameObject.Find("confirm3");
+        nomoney = GameObject.Find("nomoney");
+        button1 = GameObject.Find("BtnBom").GetComponent<Button>();
+        button2 = GameObject.Find("BtnExplosion").GetComponent<Button>();
+        button3 = GameObject.Find("BtnSpeed").GetComponent<Button>();
     }
     void Start()
     {
         player = FindObjectOfType<Player>();
-        if (player != null )
+        if (player != null)
         {
             txtHeart.text = (player.currentHealth).ToString();
             txtSpeed.text = player.speedMove.ToString();
@@ -38,44 +60,142 @@ public class RfHolder : MonoBehaviour
 
         }
         bomControl = FindObjectOfType<BomControl>();
-        if (bomControl ==null)
+        if (bomControl == null)
         {
             print("khong tim thay bomControl rfholder");
 
         }
-    }
 
+        UpdateGold();
+        confirm1.SetActive(false);
+        confirm2.SetActive(false);
+        confirm3.SetActive(false);
+        nomoney.SetActive(false);
+
+    }
+    private void UpdateGold()
+    {
+        gold = PlayerPrefs.GetInt("gold");
+        txtGold.text = gold.ToString();
+
+    }
     public void UpdateHeart()
     {
-            txtHeart.text = (player.currentHealth).ToString();
+        txtHeart.text = (player.currentHealth).ToString();
 
     }
-        public void UpdateSpeed()
+    public void UpdateSpeed()
     {
-            txtSpeed.text = (player.speedMove).ToString();
+        txtSpeed.text = (player.speedMove).ToString();
+
+    }
+    public void UpdateExplosion()
+    {
+        txtExplosion.text=bomControl.radius.ToString();
+    } 
+
+    public void UpdateBomAmount()
+    {
+        txtBom.text = bomControl.bomRemaining.ToString();
 
     }
 
+    public void BuyBom()
+    {
+        BtnClick();
+        if (gold >= 200)
+        {
+            confirm1.SetActive(true);
+            OpenPopup();
 
+
+        }
+        else
+        {
+            nomoney.SetActive(true);
+            OpenPopup();
+        }
+    }
+    public void BuyExplosion()
+    {
+        BtnClick();
+        if (gold >= 200)
+        {
+            confirm2.SetActive(true);
+            OpenPopup();
+
+        }
+        else
+        {
+            nomoney.SetActive(true);
+            OpenPopup();
+        }
+    }
+    public void BuySpeed()
+    {
+        BtnClick();
+        if (gold >= 200)
+        {
+            confirm3.SetActive(true);
+            OpenPopup();
+
+        }
+        else
+        {
+            nomoney.SetActive(true);
+            OpenPopup();
+        }
+    }
     public void PutBom()
     {
         bomControl.PutBom();
-    }
 
+    }
+    public void SaveGold()
+    {
+        txtGold.text=gold.ToString();
+        PlayerPrefs.SetInt("gold", gold);
+        PlayerPrefs.Save();
+    }
     public void BomAmount()
     {
+        BtnClick();
         bomControl.bomRemaining += 1;
+        gold -= 200;
+        SaveGold();
+        Debug.Log("đã mua thêm quả bom");
+        UpdateBomAmount();
+        button1.interactable = false;
+        button1.image.color = new Color(10,10,10);
     }
 
     public void Radius()
     {
+        BtnClick();
         bomControl.radius += 1;
+        gold -= 200;
+        SaveGold();
+        Debug.Log("đã mua thêm expl");
+        UpdateExplosion();
+        button2.interactable = false;
+
+
     }
 
     public void Speed()
     {
-        player.speedMove += 2;
+        BtnClick();
+        player.speedMove += 0.5f;
+        gold -= 200;
+        SaveGold();
+        Debug.Log("đã mua thêm tốc độ");
+        UpdateSpeed();
+        button3.interactable = false;
+
+
     }
+
+
 
     public void BtnClick()
     {
@@ -84,10 +204,6 @@ public class RfHolder : MonoBehaviour
     public void OpenPopup()
     {
         AudioManager.Instance.AudioOpen();
-    }
-    public void Vibrate()
-    {
-        HapticFeedback.LightFeedback();
     }
 
     public void ShowIconPushBom()
@@ -99,5 +215,9 @@ public class RfHolder : MonoBehaviour
         bomControl.HideIconPushBom();
     }
 
+    public void Vibrate()
+    {
+        HapticFeedback.LightFeedback();
+    }
 
 }

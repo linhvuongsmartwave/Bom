@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 4a788400918ee984996b1b9d6cc5811c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 94c46ebcc870bd24eb2546ab0bcf5902, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -229,18 +229,12 @@ MonoBehaviour:
   speedMove: 0
   movement: {x: 0, y: 0}
   currentHealth: 0
-  sliderheath: {fileID: 9141700990199382255}
   characterData: {fileID: 11400000, guid: 9b574af1b059ded40822d1f28f452eea, type: 2}
+  sliderheath: {fileID: 9141700990199382255}
   typeEnemy: 1
   bomPrefabs: {fileID: 9183247948338821838, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
   bomFuseTime: 3
   bomRemaining: 1
-  effectLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  effect: {fileID: 3488737863066624823, guid: f6c009c36bdcba044ab4ee5563cd31ba, type: 3}
-  duration: 1
-  radius: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 768

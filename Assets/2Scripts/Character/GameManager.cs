@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
- 
+
 
         panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
         panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
@@ -87,7 +87,11 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDestroyed()
     {
         countEnemy--;
-         if (countEnemy <= 0) if (panelWin != null) panelWin.PanelFadeIn();
+        if (countEnemy <= 0) if (panelWin != null)
+            {
+                AudioManager.Instance.AudioWin();
+                panelWin.PanelFadeIn();
+            }
     }
     public void Replay()
     {

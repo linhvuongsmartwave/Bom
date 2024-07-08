@@ -13,8 +13,7 @@ public class Player : Character
         buffaloPlayer,
         speedPlayer
     }
-
-    int touchshield=0;
+    bool touchS=false;
     bool isTakeDamage = false;
     bool canTakeDame = true;
     int touchBom = 0;
@@ -94,20 +93,14 @@ public class Player : Character
             isTakeDamage = true;
             Destroy(collision.gameObject);
             ShowIconShield();
-            if (touchshield==0)
+            if (!touchS)
             {
                 currentHealth++;
                 RfHolder.Instance.UpdateHeart();
-                touchshield++;
+                touchS = true;
             }
-            else if (touchshield==1)
-            {
-                return;
-            }
+      
             
-         
-        
- 
         }
     }
 
@@ -121,14 +114,15 @@ public class Player : Character
 
     public void TakeDamage()
     {
+        currentHealth--;
+        RfHolder.Instance.UpdateHeart();
         if (!isTakeDamage)
         {
+            touchS=false;
             touchBom += 1;
-            currentHealth--;
-            RfHolder.Instance.UpdateHeart();
+       
             if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)
             {
-                //heal(maxHealth);
                 if (touchBom == 1)
                 {
                     Die();
@@ -137,7 +131,6 @@ public class Player : Character
             }
             else if (typePlayer == TypePlayer.buffaloPlayer)
             {
-                //heal(maxHealth/2);
                 if (touchBom == 2)
                 {
                     Die();
