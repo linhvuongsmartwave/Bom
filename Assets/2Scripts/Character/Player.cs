@@ -22,14 +22,12 @@ public class Player : Character
     public override void Awake()
     {
         base.Awake();
-        //if (typePlayer==TypePlayer.speedPlayer) speedMove += 1;
     }
+
     private void OnEnable()
     {
         movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
         iconShield = GameObject.Find("ShieldFalse");
-        Debug.Log("player");
-
     }
 
     public void ShowIconShield()

@@ -104,10 +104,7 @@ public class Enemy : Character
 
     private void CheckForObstacles()
     {
-        Vector2 position = rb.position;
         Vector2 forward = new Vector2(movement.x, movement.y).normalized;
-        Vector2 left = new Vector2(-movement.y, movement.x).normalized;
-        Vector2 right = new Vector2(movement.y, -movement.x).normalized;
         float distance = 0.6f;
 
         RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), forward, distance, obstacleLayer);
