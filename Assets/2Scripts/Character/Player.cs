@@ -44,6 +44,7 @@ public class Player : Character
     {
         iconShield.SetActive(true);
         bongbong.SetActive(false);
+        touchS = false;
 
     }
 
@@ -129,7 +130,7 @@ public class Player : Character
         RfHolder.Instance.UpdateHeart();
         if (!isTakeDamage)
         {
-            touchS=false;
+    
             touchBom += 1;
        
             if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)

@@ -7,42 +7,44 @@ using TMPro;
 
 public class RfHolder : MonoBehaviour
 {
-    private TextMeshProUGUI txtHeart;
-    private TextMeshProUGUI txtExplosion;
-    private TextMeshProUGUI txtSpeed;
     private TextMeshProUGUI txtBom;
     private TextMeshProUGUI txtGold;
-    public static RfHolder Instance;
-    private BomControl bomControl;
-    private Player player;
+    private TextMeshProUGUI txtHeart;
+    private TextMeshProUGUI txtSpeed;
+    private TextMeshProUGUI txtExplosion;
+
     private int gold;
+    private Player player;
+    private BomControl bomControl;
 
-
+    private GameObject nomoney;
     private GameObject confirm1;
     private GameObject confirm2;
     private GameObject confirm3;
-
-    private GameObject nomoney;
 
     private Button button1;
     private Button button2;
     private Button button3;
 
+    public static RfHolder Instance;
     private void Awake()
     {
         Instance = this;
-        txtHeart = GameObject.Find("txtHeart").GetComponent<TextMeshProUGUI>();
-        txtExplosion = GameObject.Find("txtExplosion").GetComponent<TextMeshProUGUI>();
-        txtSpeed = GameObject.Find("txtSpeed").GetComponent<TextMeshProUGUI>();
-        txtBom = GameObject.Find("txtBom").GetComponent<TextMeshProUGUI>();
-        txtGold = GameObject.Find("txtGold").GetComponent<TextMeshProUGUI>();
+
+        nomoney = GameObject.Find("nomoney");
         confirm1 = GameObject.Find("confirm1");
         confirm2 = GameObject.Find("confirm2");
         confirm3 = GameObject.Find("confirm3");
-        nomoney = GameObject.Find("nomoney");
+
         button1 = GameObject.Find("BtnBom").GetComponent<Button>();
-        button2 = GameObject.Find("BtnExplosion").GetComponent<Button>();
         button3 = GameObject.Find("BtnSpeed").GetComponent<Button>();
+        button2 = GameObject.Find("BtnExplosion").GetComponent<Button>();
+
+        txtBom = GameObject.Find("txtBom").GetComponent<TextMeshProUGUI>();
+        txtGold = GameObject.Find("txtGold").GetComponent<TextMeshProUGUI>();
+        txtHeart = GameObject.Find("txtHeart").GetComponent<TextMeshProUGUI>();
+        txtSpeed = GameObject.Find("txtSpeed").GetComponent<TextMeshProUGUI>();
+        txtExplosion = GameObject.Find("txtExplosion").GetComponent<TextMeshProUGUI>();
     }
     void Start()
     {
@@ -65,30 +67,29 @@ public class RfHolder : MonoBehaviour
             print("khong tim thay bomControl rfholder");
 
         }
-
         UpdateGold();
         confirm1.SetActive(false);
         confirm2.SetActive(false);
         confirm3.SetActive(false);
         nomoney.SetActive(false);
-
     }
+
     private void UpdateGold()
     {
         gold = PlayerPrefs.GetInt("gold");
         txtGold.text = gold.ToString();
-
     }
+
     public void UpdateHeart()
     {
         txtHeart.text = (player.currentHealth).ToString();
-
     }
+
     public void UpdateSpeed()
     {
         txtSpeed.text = (player.speedMove).ToString();
-
     }
+
     public void UpdateExplosion()
     {
         txtExplosion.text=bomControl.radius.ToString();
@@ -107,8 +108,6 @@ public class RfHolder : MonoBehaviour
         {
             confirm1.SetActive(true);
             OpenPopup();
-
-
         }
         else
         {
@@ -116,6 +115,7 @@ public class RfHolder : MonoBehaviour
             OpenPopup();
         }
     }
+
     public void BuyExplosion()
     {
         BtnClick();
@@ -123,7 +123,6 @@ public class RfHolder : MonoBehaviour
         {
             confirm2.SetActive(true);
             OpenPopup();
-
         }
         else
         {
@@ -131,6 +130,7 @@ public class RfHolder : MonoBehaviour
             OpenPopup();
         }
     }
+
     public void BuySpeed()
     {
         BtnClick();
@@ -138,7 +138,6 @@ public class RfHolder : MonoBehaviour
         {
             confirm3.SetActive(true);
             OpenPopup();
-
         }
         else
         {
@@ -146,17 +145,19 @@ public class RfHolder : MonoBehaviour
             OpenPopup();
         }
     }
+
     public void PutBom()
     {
         bomControl.PutBom();
-
     }
+
     public void SaveGold()
     {
         txtGold.text=gold.ToString();
         PlayerPrefs.SetInt("gold", gold);
         PlayerPrefs.Save();
     }
+
     public void BomAmount()
     {
         BtnClick();
@@ -178,8 +179,6 @@ public class RfHolder : MonoBehaviour
         Debug.Log("đã mua thêm expl");
         UpdateExplosion();
         button2.interactable = false;
-
-
     }
 
     public void Speed()
