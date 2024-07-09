@@ -132,6 +132,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: bb81b7a42ed16fa448b1c8d43ddbbe6b, type: 2}
   movementJoystick: {fileID: 0}
   typePlayer: 2
+  bongbong: {fileID: 7799357027393057080, guid: 67b97d276a776e64dab64ea5bd522b04, type: 3}
 --- !u!50 &5805175218472133399
 Rigidbody2D:
   serializedVersion: 4

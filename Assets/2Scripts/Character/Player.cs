@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : Character
 {
     public FixedJoystick movementJoystick;
+    bool isLife=true;
 
     public TypePlayer typePlayer;
     public enum TypePlayer
@@ -18,6 +20,7 @@ public class Player : Character
     bool canTakeDame = true;
     int touchBom = 0;
     private GameObject iconShield;
+    public GameObject bongbong;
 
     public override void Awake()
     {
@@ -28,19 +31,24 @@ public class Player : Character
     {
         movementJoystick = GameObject.Find("Joystick").GetComponent<FixedJoystick>();
         iconShield = GameObject.Find("ShieldFalse");
+        bongbong.SetActive(false);
     }
 
     public void ShowIconShield()
     {
         iconShield.SetActive(false);
+        bongbong.SetActive(true);
     }
     public void HideIconShield()
     {
         iconShield.SetActive(true);
+        bongbong.SetActive(false);
+
     }
 
     public void Update()
     {
+
         Vector2 direction = movementJoystick.Direction;
         float horizontalInput = direction.x;
         float verticalInput = direction.y;
@@ -68,7 +76,11 @@ public class Player : Character
 
     public void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
+        if (isLife)
+        {
+
+            rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -140,6 +152,7 @@ public class Player : Character
 
     public void Die()
     {
+        isLife = false;
         anm.SetBool("Die", true);
         GameManager.Instance.panelLose.PanelFadeIn();
         GameManager.Instance.isPause = false;
