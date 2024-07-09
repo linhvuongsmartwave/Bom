@@ -25,6 +25,7 @@ public class Player : Character
     public override void Awake()
     {
         base.Awake();
+        bongbong = transform.GetChild(0).gameObject;
     }
 
     private void OnEnable()

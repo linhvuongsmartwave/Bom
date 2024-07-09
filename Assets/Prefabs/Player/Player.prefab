@@ -133,7 +133,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 61d78370108c49f499c67b3af2488969, type: 2}
   movementJoystick: {fileID: 0}
   typePlayer: 0
-  bongbong: {fileID: 53437839496903829}
+  bongbong: {fileID: 0}
 --- !u!50 &1152138477077971953
 Rigidbody2D:
   serializedVersion: 4
@@ -349,11 +349,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b97d276a776e64dab64ea5bd522b04, type: 3}
---- !u!1 &53437839496903829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7799357027393057080, guid: 67b97d276a776e64dab64ea5bd522b04, type: 3}
-  m_PrefabInstance: {fileID: 7818592594907319725}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7206660758732911783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 613064926159108362, guid: 67b97d276a776e64dab64ea5bd522b04, type: 3}
