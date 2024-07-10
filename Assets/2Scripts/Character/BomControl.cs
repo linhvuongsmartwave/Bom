@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BomControl : MonoBehaviour
@@ -13,7 +12,6 @@ public class BomControl : MonoBehaviour
 
     [Header("Effect")]
     public int radius;
-    public Explosion effect;
     public float duration = 1f;
 
     private GameObject iconPushBom;
@@ -60,9 +58,12 @@ public class BomControl : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
-        Explosion explosion = Instantiate(effect, position, Quaternion.identity);
+        Explosion explosion = ObjectPooling.Instance.GetPooledObject("1").GetComponent<Explosion>();
+        explosion.transform.position = position;
+        explosion.transform.rotation = Quaternion.identity;
+        explosion.gameObject.SetActive(true);
         explosion.SetActiveRenderer(explosion.start);
-        explosion.DestroyAfter(duration);
+        StartCoroutine(DeactivateAfter(explosion.gameObject, duration));
         Explode(position, Vector2.up, radius);
         Explode(position, Vector2.down, radius);
         Explode(position, Vector2.left, radius);
@@ -70,7 +71,6 @@ public class BomControl : MonoBehaviour
 
         Destroy(bom);
         bomRemaining++;
-
     }
 
     private void Explode(Vector2 position, Vector2 direction, int length)
@@ -80,12 +80,21 @@ public class BomControl : MonoBehaviour
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0, effectLayer))
             return;
 
-        Explosion explosion = Instantiate(effect, position, Quaternion.identity);
+        Explosion explosion = ObjectPooling.Instance.GetPooledObject("1").GetComponent<Explosion>();
+        explosion.transform.position = position;
+        explosion.transform.rotation = Quaternion.identity;
+        explosion.gameObject.SetActive(true);
         explosion.SetActiveRenderer(length > 1 ? explosion.middle : explosion.end);
         explosion.SetDirection(direction);
-        explosion.DestroyAfter(duration);
+        StartCoroutine(DeactivateAfter(explosion.gameObject, duration));
 
         Explode(position, direction, length - 1);
+    }
+
+    private IEnumerator DeactivateAfter(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ObjectPooling.Instance.ReturnPooledObject(obj);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

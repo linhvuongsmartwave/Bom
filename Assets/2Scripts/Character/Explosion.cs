@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -6,6 +7,17 @@ public class Explosion : MonoBehaviour
     public AnimatedSpriteRenderer middle;
     public AnimatedSpriteRenderer end;
 
+    private void OnEnable()
+    {
+        StartCoroutine((DeactivateAfter(this.gameObject,1)));
+    }
+
+
+    private IEnumerator DeactivateAfter(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ObjectPooling.Instance.ReturnPooledObject(obj);
+    }
     public void SetActiveRenderer(AnimatedSpriteRenderer renderer)
     {
         start.enabled = renderer == start;
