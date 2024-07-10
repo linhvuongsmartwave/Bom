@@ -6,6 +6,7 @@ public class ObjectPooling : MonoBehaviour
     public static ObjectPooling Instance;
 
     private Dictionary<string, Queue<GameObject>> poolDictionary;
+    public Transform pointSpawn;
 
     [System.Serializable]
     public class Pool
@@ -34,6 +35,7 @@ public class ObjectPooling : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
+                obj.transform.SetParent(pointSpawn);
                 objectPool.Enqueue(obj);
             }
 
@@ -45,12 +47,12 @@ public class ObjectPooling : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(tag))
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
             return null;
         }
 
         GameObject obj = poolDictionary[tag].Dequeue();
         obj.SetActive(true);
+        obj.transform.SetParent(pointSpawn);
         poolDictionary[tag].Enqueue(obj);
 
         return obj;

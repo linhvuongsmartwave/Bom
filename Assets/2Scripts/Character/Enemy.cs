@@ -72,12 +72,17 @@ public class Enemy : Character
         {
             yield break;
         }
-        GameObject bom = Instantiate(bomPrefabs, position, Quaternion.identity);
-        bomRemaining--;
-        yield return new WaitForSeconds(bomFuseTime);
 
-        Destroy(bom);
-        bomRemaining++;
+        GameObject bom = ObjectPooling.Instance.GetPooledObject("Bom");
+        if (bom != null)
+        {
+            bom.transform.position = position;
+            bomRemaining--;
+            yield return new WaitForSeconds(bomFuseTime);
+
+            ObjectPooling.Instance.ReturnPooledObject(bom);
+            bomRemaining++;
+        }
     }
 
 

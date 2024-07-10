@@ -14,9 +14,10 @@ public class BomEnemy : MonoBehaviour
     {
         radius = 1;
 
-        Destroy(gameObject,3f);
+        //Destroy(gameObject,3f);
     }
-    private void OnDestroy()
+ 
+    private void OnDisable()
     {
         Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
@@ -34,8 +35,8 @@ public class BomEnemy : MonoBehaviour
         Explode(position, Vector2.down, radius);
         Explode(position, Vector2.left, radius);
         Explode(position, Vector2.right, radius);
-
     }
+
 
     private void Explode(Vector2 position, Vector2 direction, int length)
     {
