@@ -25,6 +25,9 @@ public class RfHolder : MonoBehaviour
     private Button button1;
     private Button button2;
     private Button button3;
+    private Image buttonImage1;
+    private Image buttonImage2;
+    private Image buttonImage3;
 
     public static RfHolder Instance;
     private void Awake()
@@ -64,6 +67,10 @@ public class RfHolder : MonoBehaviour
         confirm2.SetActive(false);
         confirm3.SetActive(false);
         nomoney.SetActive(false);
+
+        buttonImage1=button1.GetComponent<Image>();
+        buttonImage2=button2.GetComponent<Image>();
+        buttonImage3=button3.GetComponent<Image>();
     }
 
     private void UpdateGold()
@@ -158,7 +165,7 @@ public class RfHolder : MonoBehaviour
         Debug.Log("đã mua thêm quả bom");
         UpdateBomAmount();
         button1.interactable = false;
-        button1.image.color = new Color(10,10,10);
+        buttonImage1.color = new Color(100,100,100);
     }
 
     public void Radius()
