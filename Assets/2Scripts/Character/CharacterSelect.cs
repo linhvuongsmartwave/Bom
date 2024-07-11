@@ -7,6 +7,7 @@ public class CharacterSelect : MonoBehaviour
     public GameObject[] skins;
     public GameObject[] buttons;
     public int characterSelect;
+    public GameObject nomoney;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -17,7 +18,7 @@ public class CharacterSelect : MonoBehaviour
             player.SetActive(false);
 
         skins[characterSelect].SetActive(true);
-
+        nomoney.SetActive(false);
     }
 
     public void Next()
@@ -54,10 +55,20 @@ public class CharacterSelect : MonoBehaviour
 
     public void BuyCharacter(int characterIndex)
     {
-
         AudioManager.Instance.AudioButtonClick();
-        PlayerPrefs.SetInt("Character_" + (characterIndex) + "_Bought", 1);
-        buttons[characterIndex].SetActive(false);
+
+        int priceCharacter = 1000;
+        if (Shop.Instance.gold >= priceCharacter)
+        {
+            Shop.Instance.gold -= priceCharacter;
+            Shop.Instance.Save();
+            PlayerPrefs.SetInt("Character_" + (characterIndex) + "_Bought", 1);
+            buttons[characterIndex].SetActive(false);
+        }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
     private void Update()
     {

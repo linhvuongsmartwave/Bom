@@ -4,7 +4,7 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+public class Shop : Singleton<Shop>
 {
     public int gold;
     public TextMeshProUGUI txtGold;
