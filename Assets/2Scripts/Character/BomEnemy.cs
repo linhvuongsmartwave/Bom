@@ -5,36 +5,41 @@ using UnityEngine.UIElements;
 
 public class BomEnemy : MonoBehaviour
 {
-
+    public int radius;
     public Explosion effect;
     public float duration = 1f;
-    public int radius;
     public LayerMask effectLayer;
+    bool isDelay = true;
     void Start()
     {
         radius = 1;
-
-        //Destroy(gameObject,3f);
+        Invoke(nameof(DelayOndisable), 1f);
     }
  
     private void OnDisable()
     {
-        Vector2 position = transform.position;
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
+        if (!isDelay)
+        {
+            print("chay vao day");
+            Vector2 position = transform.position;
+            position.x = Mathf.Round(position.x);
+            position.y = Mathf.Round(position.y);
 
+            Explosion explosion = ObjectPooling.Instance.GetPooledObject("effectenemy").GetComponent<Explosion>();
+            explosion.transform.position = position;
+            explosion.transform.rotation = Quaternion.identity;
+            explosion.gameObject.SetActive(true);
+            explosion.SetActiveRenderer(explosion.start);
+            Explode(position, Vector2.up, radius);
+            Explode(position, Vector2.down, radius);
+            Explode(position, Vector2.left, radius);
+            Explode(position, Vector2.right, radius);
+        }
+    }
 
-
-
-        Explosion explosion = ObjectPooling.Instance.GetPooledObject("2").GetComponent<Explosion>();
-        explosion.transform.position = position;
-        explosion.transform.rotation = Quaternion.identity;
-        explosion.gameObject.SetActive(true);
-        explosion.SetActiveRenderer(explosion.start);
-        Explode(position, Vector2.up, radius);
-        Explode(position, Vector2.down, radius);
-        Explode(position, Vector2.left, radius);
-        Explode(position, Vector2.right, radius);
+    void DelayOndisable()
+    {
+        isDelay=false;
     }
 
 
@@ -45,7 +50,7 @@ public class BomEnemy : MonoBehaviour
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0, effectLayer))
             return;
 
-        Explosion explosion = ObjectPooling.Instance.GetPooledObject("2").GetComponent<Explosion>();
+        Explosion explosion = ObjectPooling.Instance.GetPooledObject("effectenemy").GetComponent<Explosion>();
         explosion.transform.position = position;
         explosion.transform.rotation = Quaternion.identity;
         explosion.gameObject.SetActive(true);

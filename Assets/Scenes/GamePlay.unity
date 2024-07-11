@@ -7817,7 +7817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746835723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98195326, y: -0.5435126, z: -0.07196449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7838,12 +7838,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointSpawn: {fileID: 1746835724}
   pools:
-  - tag: 1
+  - tag: effectplayer
     prefab: {fileID: 3327377146596020553, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
     size: 10
-  - tag: 2
+  - tag: effectenemy
     prefab: {fileID: 3327377146596020553, guid: f6c009c36bdcba044ab4ee5563cd31ba, type: 3}
-    size: 20
+    size: 15
   - tag: Bom
     prefab: {fileID: 9183247948338821838, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
     size: 3

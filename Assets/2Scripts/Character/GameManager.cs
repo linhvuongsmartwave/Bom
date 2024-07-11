@@ -39,8 +39,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
-
         panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
         panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
     }

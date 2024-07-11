@@ -252,7 +252,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018416047, y: -0.42166328}
+  m_Offset: {x: -0.018416047, y: -0.36}
   serializedVersion: 2
   m_Radius: 0.41388774
 --- !u!114 &8967363528890312568
@@ -272,9 +272,8 @@ MonoBehaviour:
   effectLayer:
     serializedVersion: 2
     m_Bits: 512
-  bomFuseTime: 2
+  bomFuseTime: 2.5
   radius: 1
-  effect: {fileID: 3488737863066624823, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
   duration: 0.7
 --- !u!1001 &6773153804098144532
 PrefabInstance:

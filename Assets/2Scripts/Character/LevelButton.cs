@@ -2,31 +2,19 @@
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 public class LevelButton : MonoBehaviour
 {
-    public static LevelButton Instance;
+    [SerializeField] private Image buttonImg;
     [SerializeField] private Sprite currentButton;
     [SerializeField] private Sprite lockedButton;
-    [SerializeField] private Image buttonImg;
     [SerializeField] private TextMeshProUGUI txtNumberLevel;
-    public SceneFader sceneFader;
 
     public int numLevel;
     public int nextLevel;
     private Button button;
     private bool canClick = true;
-    public void OnButtonClick()
-    {
-        AudioManager.Instance.AudioButtonClick();
-        if (canClick)
-        {
-            PlayerPrefs.SetInt("SelectedLevel", numLevel);
-            PlayerPrefs.Save();
-            sceneFader.FadeTo("GamePlay");
-        }
-
-    }
+    public SceneFader sceneFader;
+    public static LevelButton Instance;
 
     private void Awake()
     {
@@ -52,6 +40,17 @@ public class LevelButton : MonoBehaviour
             buttonImg.sprite = lockedButton;
             txtNumberLevel.gameObject.SetActive(false);
             canClick = false;
+        }
+    }
+
+    public void OnButtonClick()
+    {
+        AudioManager.Instance.AudioButtonClick();
+        if (canClick)
+        {
+            PlayerPrefs.SetInt("SelectedLevel", numLevel);
+            PlayerPrefs.Save();
+            sceneFader.FadeTo("GamePlay");
         }
     }
 }

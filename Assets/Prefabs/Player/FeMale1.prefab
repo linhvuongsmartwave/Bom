@@ -188,9 +188,8 @@ MonoBehaviour:
   effectLayer:
     serializedVersion: 2
     m_Bits: 512
-  bomFuseTime: 2
+  bomFuseTime: 2.5
   radius: 1
-  effect: {fileID: 3488737863066624823, guid: 8039e2983b311a94eb0dc8361936393f, type: 3}
   duration: 0.7
 --- !u!1 &3419295156151889865
 GameObject:

@@ -21,12 +21,12 @@ public class AudioManager : Singleton<AudioManager>
     public void BomExp()
     {
         audioSoure.PlayOneShot(bomExp);
-    }    
+    }
 
     public void CoolDown()
     {
         audioSoure.PlayOneShot(coolDown);
-    }    
+    }
 
     public void AudioOpen()
     {
@@ -37,11 +37,13 @@ public class AudioManager : Singleton<AudioManager>
     {
         audioSoure.PlayOneShot(buttonClick);
     }
-        public void AudioCoin()
+
+    public void AudioCoin()
     {
         audioSoure.PlayOneShot(coin);
     }
-            public void AudioWin()
+
+    public void AudioWin()
     {
         audioSoure.PlayOneShot(win);
     }

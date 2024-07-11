@@ -231,6 +231,7 @@ MonoBehaviour:
   currentHealth: 0
   characterData: {fileID: 11400000, guid: 9b574af1b059ded40822d1f28f452eea, type: 2}
   sliderheath: {fileID: 9141700990199382255}
+  bomEnemy: {fileID: 7730065045072895827, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
   typeEnemy: 1
   bomPrefabs: {fileID: 9183247948338821838, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
   bomFuseTime: 3

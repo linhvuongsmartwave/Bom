@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Enemy : Character
 {
     public Slider sliderheath;
-
     public TypeEnemy typeEnemy;
     int bossHp = 3;
     public enum TypeEnemy

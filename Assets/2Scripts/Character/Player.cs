@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Player : Character
 {
-    public FixedJoystick movementJoystick;
     bool isLife=true;
+    int touchBom = 0;
+    bool touchS=false;
+    bool canTakeDame = true;
+    bool isTakeDamage = false;
+    public GameObject bongbong;
+    private GameObject iconShield;
 
     public TypePlayer typePlayer;
     public enum TypePlayer
@@ -15,12 +19,8 @@ public class Player : Character
         buffaloPlayer,
         speedPlayer
     }
-    bool touchS=false;
-    bool isTakeDamage = false;
-    bool canTakeDame = true;
-    int touchBom = 0;
-    private GameObject iconShield;
-    public GameObject bongbong;
+
+    public FixedJoystick movementJoystick;
 
     public override void Awake()
     {
@@ -40,17 +40,16 @@ public class Player : Character
         iconShield.SetActive(false);
         bongbong.SetActive(true);
     }
+
     public void HideIconShield()
     {
         iconShield.SetActive(true);
         bongbong.SetActive(false);
         touchS = false;
-
     }
 
     public void Update()
     {
-
         Vector2 direction = movementJoystick.Direction;
         float horizontalInput = direction.x;
         float verticalInput = direction.y;
@@ -78,11 +77,7 @@ public class Player : Character
 
     public void FixedUpdate()
     {
-        if (isLife)
-        {
-
-            rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
-        }
+        if (isLife) rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,7 +94,6 @@ public class Player : Character
             isTakeDamage = false;
             HideIconShield();
         }
-
         if (collision.gameObject.CompareTag(Const.shield))
         {
             isTakeDamage = true;
@@ -111,8 +105,6 @@ public class Player : Character
                 RfHolder.Instance.UpdateHeart();
                 touchS = true;
             }
-      
-            
         }
     }
 
@@ -130,9 +122,7 @@ public class Player : Character
         RfHolder.Instance.UpdateHeart();
         if (!isTakeDamage)
         {
-    
             touchBom += 1;
-       
             if (typePlayer == TypePlayer.normalPlayer || typePlayer == TypePlayer.speedPlayer)
             {
                 if (touchBom == 1)
@@ -158,16 +148,10 @@ public class Player : Character
         anm.SetBool("Die", true);
         GameManager.Instance.panelLose.PanelFadeIn();
         GameManager.Instance.isPause = false;
-
     }
 
     void EventAnimDestroy()
     {
         Destroy(this.gameObject);
     }
-
-    //public void heal(int damage)
-    //{
-    //    currentHealth -= damage;
-    //}
 }

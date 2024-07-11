@@ -56,17 +56,9 @@ public class RfHolder : MonoBehaviour
             txtExplosion.text = 1.ToString();
             txtBom.text = 1.ToString();
         }
-        else
-        {
-            print("khong tim thay player rfholder");
-
-        }
+        else print("khong tim thay player rfholder");
         bomControl = FindObjectOfType<BomControl>();
-        if (bomControl == null)
-        {
-            print("khong tim thay bomControl rfholder");
-
-        }
+        if (bomControl == null) print("khong tim thay bomControl rfholder");
         UpdateGold();
         confirm1.SetActive(false);
         confirm2.SetActive(false);
@@ -98,7 +90,6 @@ public class RfHolder : MonoBehaviour
     public void UpdateBomAmount()
     {
         txtBom.text = bomControl.bomRemaining.ToString();
-
     }
 
     public void BuyBom()
@@ -190,16 +181,13 @@ public class RfHolder : MonoBehaviour
         Debug.Log("đã mua thêm tốc độ");
         UpdateSpeed();
         button3.interactable = false;
-
-
     }
-
-
 
     public void BtnClick()
     {
         AudioManager.Instance.AudioButtonClick();
     }
+
     public void OpenPopup()
     {
         AudioManager.Instance.AudioOpen();
@@ -209,6 +197,7 @@ public class RfHolder : MonoBehaviour
     {
         bomControl.ShowIconPushBom();
     }
+
     public void HideIconPushBom()
     {
         bomControl.HideIconPushBom();

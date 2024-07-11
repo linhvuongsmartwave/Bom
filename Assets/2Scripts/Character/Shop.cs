@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public TextMeshProUGUI txtGold;
-
     public int gold;
+    public TextMeshProUGUI txtGold;
 
     private void Start()
     {
@@ -21,8 +20,6 @@ public class Shop : MonoBehaviour
         this.gold += gold;
         Save();
         UpdateGold();
-
-
     }
 
     public void Load()
@@ -35,14 +32,11 @@ public class Shop : MonoBehaviour
     {
         PlayerPrefs.SetInt("gold", gold);
         PlayerPrefs.Save();
-
     }
 
     public void UpdateGold()
     {
         txtGold.text = gold.ToString();
-
     }
-
-
 }
+

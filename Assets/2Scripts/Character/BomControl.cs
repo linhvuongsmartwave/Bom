@@ -8,7 +8,7 @@ public class BomControl : MonoBehaviour
     public int bomRemaining;
     public GameObject bomPrefabs;
     public LayerMask effectLayer;
-    public float bomFuseTime = 3f;
+    public float bomFuseTime = 2.5f;
 
     [Header("Effect")]
     public int radius;
@@ -20,6 +20,7 @@ public class BomControl : MonoBehaviour
     {
         radius = 1;
         bomRemaining = 1;
+        bomFuseTime = 2.5f;
         iconPushBom = GameObject.Find("ShoesFalse");
     }
 
@@ -27,6 +28,7 @@ public class BomControl : MonoBehaviour
     {
         iconPushBom.SetActive(false);
     }
+
     public void HideIconPushBom()
     {
         iconPushBom.SetActive(true);
@@ -58,7 +60,7 @@ public class BomControl : MonoBehaviour
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
 
-        Explosion explosion = ObjectPooling.Instance.GetPooledObject("1").GetComponent<Explosion>();
+        Explosion explosion = ObjectPooling.Instance.GetPooledObject("effectplayer").GetComponent<Explosion>();
         explosion.transform.position = position;
         explosion.transform.rotation = Quaternion.identity;
         explosion.gameObject.SetActive(true);
@@ -80,7 +82,7 @@ public class BomControl : MonoBehaviour
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0, effectLayer))
             return;
 
-        Explosion explosion = ObjectPooling.Instance.GetPooledObject("1").GetComponent<Explosion>();
+        Explosion explosion = ObjectPooling.Instance.GetPooledObject("effectplayer").GetComponent<Explosion>();
         explosion.transform.position = position;
         explosion.transform.rotation = Quaternion.identity;
         explosion.gameObject.SetActive(true);
