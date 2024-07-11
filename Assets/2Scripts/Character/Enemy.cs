@@ -42,7 +42,9 @@ public class Enemy : Character
         {
             if (typeEnemy == TypeEnemy.boss)
             {
+
                 bossHp--;
+                sliderheath.value--;
                 if (bossHp <= 0) Destroy(this.gameObject);
             }
             else Destroy(this.gameObject);

@@ -229,7 +229,7 @@ MonoBehaviour:
   speedMove: 0
   movement: {x: 0, y: 0}
   currentHealth: 0
-  characterData: {fileID: 11400000, guid: 9b574af1b059ded40822d1f28f452eea, type: 2}
+  characterData: {fileID: 11400000, guid: 6ae25bed0690f2747a4bca410347adcb, type: 2}
   sliderheath: {fileID: 9141700990199382255}
   typeEnemy: 0
   bomPrefabs: {fileID: 9183247948338821838, guid: 61360ef7227ec9b459e91cfd9784ef35, type: 3}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 3
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
