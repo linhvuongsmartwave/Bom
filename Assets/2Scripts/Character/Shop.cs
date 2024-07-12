@@ -4,11 +4,15 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Shop : Singleton<Shop>
+public class Shop : MonoBehaviour
 {
     public int gold;
     public TextMeshProUGUI txtGold;
-
+    public static Shop Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         Load();

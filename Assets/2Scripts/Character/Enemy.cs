@@ -8,6 +8,7 @@ public class Enemy : Character
     public Slider sliderheath;
     public TypeEnemy typeEnemy;
     int bossHp = 3;
+    bool isTakeDamage = true;
     public enum TypeEnemy
     {
         boss,
@@ -40,15 +41,27 @@ public class Enemy : Character
     {
         if (collision.gameObject.CompareTag(Const.effectPlayer))
         {
-            if (typeEnemy == TypeEnemy.boss)
+            if (isTakeDamage)
             {
+                StartCoroutine(nameof(HandleTrigger));
 
-                bossHp--;
-                sliderheath.value--;
-                if (bossHp <= 0) Destroy(this.gameObject);
+                if (typeEnemy == TypeEnemy.boss)
+                {
+
+                    bossHp--;
+                    sliderheath.value--;
+                    if (bossHp <= 0) Destroy(this.gameObject);
+                }
+                else Destroy(this.gameObject);
             }
-            else Destroy(this.gameObject);
         }
+    }
+    IEnumerator HandleTrigger()
+    {
+        isTakeDamage = false;
+        yield return new WaitForSeconds(1f);
+        isTakeDamage = true;
+
     }
 
     public void PutBom()

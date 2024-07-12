@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
             {
                 AudioManager.Instance.AudioWin();
                 panelWin.PanelFadeIn();
+                Shop.Instance.gold += 200;
+                Shop.Instance.Save();
             }
     }
     public void Replay()
