@@ -1,10 +1,5 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,8 +15,8 @@ public class GameManager : MonoBehaviour
     public bool isPause = true;
     public ListEnemy[] listEnemy;
     public TextMeshProUGUI level;
-    private UiPanelDotween panelWin;
-    public UiPanelDotween panelLose;
+    private UiPanelDotween uiWin;
+    public UiPanelDotween uiLose;
     Vector2 corner1 = new Vector2(5f, 4f);
     Vector2 corner2 = new Vector2(5f, -6f);
     Vector2 corner3 = new Vector2(-7f, -6f);
@@ -39,24 +34,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        panelWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
-        panelLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
+        uiWin = GameObject.Find(Const.panelWin).GetComponent<UiPanelDotween>();
+        uiLose = GameObject.Find(Const.panelLose).GetComponent<UiPanelDotween>();
     }
 
     void LoadMap(int index)
     {
-        SpawnPlayer();
+        PlayerStart();
         if (index < 0 || index >= dataMaps.Length) return;
         DataMap dataMap = dataMaps[index];
         if (dataMap.prefabMap != null)
         {
             GameObject map = Instantiate(dataMap.prefabMap, new Vector2(-0.5f, -1.5f), Quaternion.identity);
         }
-        LoadEnemy(index);
+        EnemyStart(index);
         level.text = (index + 1).ToString();
     }
 
-    void SpawnPlayer()
+    void PlayerStart()
     {
         int i = PlayerPrefs.GetInt("male");
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
@@ -70,7 +65,7 @@ public class GameManager : MonoBehaviour
         dataMaps = Resources.LoadAll<DataMap>("Map");
     }
 
-    void LoadEnemy(int levelIndex)
+    void EnemyStart(int levelIndex)
     {
         if (listEnemy == null || listEnemy.Length <= levelIndex) return;
         ListEnemy currentLevel = listEnemy[levelIndex];
@@ -82,13 +77,13 @@ public class GameManager : MonoBehaviour
         countEnemy = currentLevel.enemies.Count;
     }
 
-    public void OnEnemyDestroyed()
+    public void OnDestroyedEnemy()
     {
         countEnemy--;
-        if (countEnemy <= 0) if (panelWin != null)
+        if (countEnemy <= 0) if (uiWin != null)
             {
                 AudioManager.Instance.AudioWin();
-                panelWin.PanelFadeIn();
+                uiWin.PanelFadeIn();
                 Shop.Instance.gold += 200;
                 Shop.Instance.Save();
             }
@@ -113,12 +108,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void PauseGame()
     {
         isPause = false;
     }
 
-    public void Resume()
+    public void ResumeGame()
     {
         isPause = true;
     }

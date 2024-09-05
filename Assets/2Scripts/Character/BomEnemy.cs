@@ -1,30 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BomEnemy : MonoBehaviour
 {
     public int radius;
+    bool isDelay = true;
     public Explosion effect;
     public float duration = 1f;
     public LayerMask effectLayer;
-    bool isDelay = true;
+
     void Start()
     {
         radius = 1;
-        Invoke(nameof(DelayOndisable), 1f);
+        Invoke(nameof(DelayTimeOndisable), 1f);
     }
  
     private void OnDisable()
     {
         if (!isDelay)
         {
-            print("chay vao day");
             Vector2 position = transform.position;
             position.x = Mathf.Round(position.x);
             position.y = Mathf.Round(position.y);
-
             Explosion explosion = ObjectPooling.Instance.GetPooledObject("effectenemy").GetComponent<Explosion>();
             explosion.transform.position = position;
             explosion.transform.rotation = Quaternion.identity;
@@ -37,11 +34,10 @@ public class BomEnemy : MonoBehaviour
         }
     }
 
-    void DelayOndisable()
+    void DelayTimeOndisable()
     {
         isDelay=false;
     }
-
 
     private void Explode(Vector2 position, Vector2 direction, int length)
     {
@@ -56,7 +52,6 @@ public class BomEnemy : MonoBehaviour
         explosion.gameObject.SetActive(true);
         explosion.SetActiveRenderer(length > 1 ? explosion.middle : explosion.end);
         explosion.SetDirection(direction);
-  
 
         Explode(position, direction, length - 1);
     }

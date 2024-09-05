@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Enemy : Character
 {
-    public Slider sliderheath;
-    public TypeEnemy typeEnemy;
     int bossHp = 3;
     bool isTakeDamage = true;
+    public Slider sliderheath;
+
+    public TypeEnemy typeEnemy;
     public enum TypeEnemy
     {
         boss,
@@ -28,26 +29,23 @@ public class Enemy : Character
     {
         base.Awake();
         sliderheath.value = currentHealth;
-
         bomRemaining = 1;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnEnemyDestroyed();
-
+        GameManager.Instance.OnDestroyedEnemy();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Const.effectPlayer))
         {
             if (isTakeDamage)
             {
-                StartCoroutine(nameof(HandleTrigger));
-
+                StartCoroutine(nameof(HandleOnTrigger));
                 if (typeEnemy == TypeEnemy.boss)
                 {
-
                     bossHp--;
                     sliderheath.value--;
                     if (bossHp <= 0) Destroy(this.gameObject);
@@ -56,7 +54,8 @@ public class Enemy : Character
             }
         }
     }
-    IEnumerator HandleTrigger()
+
+    IEnumerator HandleOnTrigger()
     {
         isTakeDamage = false;
         yield return new WaitForSeconds(1f);
@@ -68,10 +67,7 @@ public class Enemy : Character
     {
         if (bomRemaining > 0)
         {
-            if (GameManager.Instance.isPause)
-            {
-                StartCoroutine(PlaceBom());
-            }
+            if (GameManager.Instance.isPause) StartCoroutine(PlaceBom());
         }
     }
 
@@ -80,48 +76,38 @@ public class Enemy : Character
         Vector2 position = transform.position;
         position.x = Mathf.Round(position.x);
         position.y = Mathf.Round(position.y);
-
         Collider2D existingBom = Physics2D.OverlapBox(position, Vector2.one / 2f, 0, LayerMask.GetMask("Bom"));
         if (existingBom != null)
         {
             yield break;
         }
-
         GameObject bom = ObjectPooling.Instance.GetPooledObject("Bom");
         if (bom != null)
         {
             bom.transform.position = position;
             bomRemaining--;
             yield return new WaitForSeconds(bomFuseTime);
-
             ObjectPooling.Instance.ReturnPooledObject(bom);
             bomRemaining++;
         }
     }
 
-
-
     public void Update()
     {
-
         movement = movementDirection;
-
         anm.SetFloat("Horizontal", movement.x);
         anm.SetFloat("Vertical", movement.y);
         anm.SetFloat("Speed", movement.sqrMagnitude);
-        CheckForObstacles();
+        CheckObstacles();
     }
 
     public void FixedUpdate()
     {
         if (GameManager.Instance.isPause)
-        {
-
             rb.MovePosition(rb.position + movement * speedMove * Time.fixedDeltaTime);
-        }
     }
 
-    private void CheckForObstacles()
+    private void CheckObstacles()
     {
         Vector2 forward = new Vector2(movement.x, movement.y).normalized;
         float distance = 0.6f;
@@ -129,12 +115,12 @@ public class Enemy : Character
         RaycastHit2D hitForward = Physics2D.Raycast(new Vector2(rb.position.x, rb.position.y - 0.2f), forward, distance, obstacleLayer);
         if (hitForward.collider != null)
         {
-            movementDirection = GetNewDirection(movementDirection);
+            movementDirection = NewDirection(movementDirection);
             PutBom();
         }
     }
 
-    private Vector2 GetNewDirection(Vector2 currentDirection)
+    private Vector2 NewDirection(Vector2 currentDirection)
     {
         List<Vector2> newDirections = new List<Vector2>(randomDirections);
         newDirections.Remove(currentDirection);

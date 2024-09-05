@@ -34,7 +34,7 @@ public class RfHolder : MonoBehaviour
     {
         Instance = this;
 
-        nomoney = GameObject.Find("nomoney");
+        nomoney = GameObject.Find("Nomoney");
         confirm1 = GameObject.Find("confirm1");
         confirm2 = GameObject.Find("confirm2");
         confirm3 = GameObject.Find("confirm3");
@@ -162,7 +162,6 @@ public class RfHolder : MonoBehaviour
         bomControl.bomRemaining += 1;
         gold -= 200;
         SaveGold();
-        Debug.Log("đã mua thêm quả bom");
         UpdateBomAmount();
         button1.interactable = false;
         buttonImage1.color = new Color(100,100,100);
@@ -174,7 +173,6 @@ public class RfHolder : MonoBehaviour
         bomControl.radius += 1;
         gold -= 200;
         SaveGold();
-        Debug.Log("đã mua thêm expl");
         UpdateExplosion();
         button2.interactable = false;
     }
@@ -185,7 +183,6 @@ public class RfHolder : MonoBehaviour
         player.speedMove += 0.5f;
         gold -= 200;
         SaveGold();
-        Debug.Log("đã mua thêm tốc độ");
         UpdateSpeed();
         button3.interactable = false;
     }

@@ -146,7 +146,7 @@ public class Player : Character
     {
         isLife = false;
         anm.SetBool("Die", true);
-        GameManager.Instance.panelLose.PanelFadeIn();
+        GameManager.Instance.uiLose.PanelFadeIn();
         GameManager.Instance.isPause = false;
     }
 

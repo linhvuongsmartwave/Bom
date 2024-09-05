@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public AudioSource audioSoure;
+    public AudioClip win;
+    public AudioClip coin;
     public AudioClip bomExp;
     public AudioClip coolDown;
     public AudioClip openPopup;
     public AudioClip buttonClick;
-    public AudioClip coin;
-    public AudioClip win;
+    public AudioSource audioSoure;
 
     void Start()
     {

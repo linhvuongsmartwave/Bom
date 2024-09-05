@@ -69,6 +69,7 @@ public class CharacterSelect : MonoBehaviour
         {
             nomoney.SetActive(true);
         }
+
     }
     private void Update()
     {
