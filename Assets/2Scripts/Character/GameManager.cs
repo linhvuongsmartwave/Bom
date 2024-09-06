@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+
         Instance = this;
         numberSelect = PlayerPrefs.GetInt("SelectedLevel", 0);
         numberLevel = PlayerPrefs.GetInt("CompletedLevel", 0);
